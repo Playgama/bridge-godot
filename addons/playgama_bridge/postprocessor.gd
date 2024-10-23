@@ -22,6 +22,8 @@ const SETTINGS_PATH = "addons/playgama_bridge/general/"
 const SETTINGS_GAME_DISTRIBUTION_GAME_ID_KEY = "game_distribution_game_id"
 const SETTINGS_VK_PLAY_GAME_ID_KEY = "vk_play_game_id"
 const SETTINGS_Y8_GAME_ID_KEY = "y8_game_id"
+const SETTINGS_LAGGED_DEV_ID_KEY = "lagged_dev_id"
+const SETTINGS_LAGGED_PUBLISHER_ID_KEY = "lagged_publisher_id"
 const SETTINGS_ADSGRAM_BLOCK_ID_KEY = "adsgram_block_id"
 
 var _path = null
@@ -47,6 +49,8 @@ func _export_end():
 	var game_distribution_game_id = ""
 	var vk_play_game_id = ""
 	var y8_game_id = ""
+	var lagged_dev_id = ""
+	var lagged_publisher_id = ""
 	var adsgram_block_id = ""
 	
 	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_GAME_DISTRIBUTION_GAME_ID_KEY):
@@ -57,6 +61,12 @@ func _export_end():
 	
 	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_Y8_GAME_ID_KEY):
 		y8_game_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_Y8_GAME_ID_KEY)
+
+	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_LAGGED_DEV_ID_KEY):
+		lagged_dev_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_LAGGED_DEV_ID_KEY)
+
+	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_LAGGED_PUBLISHER_ID_KEY):
+		lagged_publisher_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_LAGGED_PUBLISHER_ID_KEY)
 	
 	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_ADSGRAM_BLOCK_ID_KEY):
 		adsgram_block_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_ADSGRAM_BLOCK_ID_KEY)
@@ -68,6 +78,8 @@ func _export_end():
 	content = content.format({"game_distribution_game_id":game_distribution_game_id})
 	content = content.format({"vk_play_game_id":vk_play_game_id})
 	content = content.format({"y8_game_id":y8_game_id})
+	content = content.format({"lagged_dev_id":lagged_dev_id})
+	content = content.format({"lagged_publisher_id":lagged_publisher_id})
 	content = content.format({"adsgram_block_id":adsgram_block_id})
 	
 	index.store_string(content)
