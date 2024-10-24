@@ -1,11 +1,11 @@
 extends DetailedSceneBase
 
-onready var is_banner_supported_label = $MarginContainer2/HBoxContainer/VBoxContainer/IsBannerSupported
-onready var banner_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/BannerState
-onready var minimum_delay_label = $MarginContainer2/HBoxContainer/VBoxContainer/MinimumDelay
-onready var interstitial_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/InterstitialState
-onready var rewarded_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/RewardedState
-onready var adblock_detected_label = $MarginContainer2/HBoxContainer/VBoxContainer2/AdBlockDetected
+@onready var is_banner_supported_label = $MarginContainer2/HBoxContainer/VBoxContainer/IsBannerSupported
+@onready var banner_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/BannerState
+@onready var minimum_delay_label = $MarginContainer2/HBoxContainer/VBoxContainer/MinimumDelay
+@onready var interstitial_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/InterstitialState
+@onready var rewarded_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/RewardedState
+@onready var adblock_detected_label = $MarginContainer2/HBoxContainer/VBoxContainer2/AdBlockDetected
 
 
 var last_banner_states = []
@@ -21,9 +21,9 @@ func _ready():
 	_on_interstitial_state_changed(Bridge.advertisement.interstitial_state)
 	_on_rewarded_state_changed(Bridge.advertisement.rewarded_state)
 	
-	Bridge.advertisement.connect("banner_state_changed", self, "_on_banner_state_changed")
-	Bridge.advertisement.connect("interstitial_state_changed", self, "_on_interstitial_state_changed")
-	Bridge.advertisement.connect("rewarded_state_changed", self, "_on_rewarded_state_changed")
+	Bridge.advertisement.connect("banner_state_changed", Callable(self, "_on_banner_state_changed"))
+	Bridge.advertisement.connect("interstitial_state_changed", Callable(self, "_on_interstitial_state_changed"))
+	Bridge.advertisement.connect("rewarded_state_changed", Callable(self, "_on_rewarded_state_changed"))
 
 
 func _on_show_banner_button_pressed():
@@ -57,7 +57,7 @@ func _on_show_rewarded_button_pressed():
 	Bridge.advertisement.show_rewarded()
 
 func _on_check_adblock_button_pressed():
-	Bridge.advertisement.check_adblock(funcref(self, "_on_check_adblock_completed"))
+	Bridge.advertisement.check_adblock(Callable(self, "_on_check_adblock_completed"))
 
 
 func _on_banner_state_changed(state):

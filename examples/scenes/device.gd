@@ -1,7 +1,7 @@
 extends DetailedSceneBase
 
 
-onready var device_type_label = $MarginContainer2/VBoxContainer/DeviceType
+@onready var device_type_label = $MarginContainer2/VBoxContainer/DeviceType
 
 
 func _ready():

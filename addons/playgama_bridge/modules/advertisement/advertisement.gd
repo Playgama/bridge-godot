@@ -17,11 +17,11 @@ signal banner_state_changed
 signal interstitial_state_changed
 signal rewarded_state_changed
 
-var minimum_delay_between_interstitial setget , _minimum_delay_between_interstitial_getter
-var is_banner_supported setget , _is_banner_supported_getter
-var banner_state setget , _banner_state_getter
-var interstitial_state setget , _interstitial_state_getter
-var rewarded_state setget , _rewarded_state_getter
+var minimum_delay_between_interstitial : get = _minimum_delay_between_interstitial_getter
+var is_banner_supported : get = _is_banner_supported_getter
+var banner_state : get = _banner_state_getter
+var interstitial_state : get = _interstitial_state_getter
+var rewarded_state : get = _rewarded_state_getter
 
 
 func _minimum_delay_between_interstitial_getter():
@@ -40,13 +40,13 @@ func _rewarded_state_getter():
 	return _js_advertisement.rewardedState
 
 var _js_advertisement = null
-var _js_on_banner_state_changed = JavaScript.create_callback(self, "_on_banner_state_changed")
-var _js_on_interstitial_state_changed = JavaScript.create_callback(self, "_on_interstitial_state_changed")
-var _js_on_rewarded_state_changed = JavaScript.create_callback(self, "_on_rewarded_state_changed")
+var _js_on_banner_state_changed = JavaScriptBridge.create_callback(self._on_banner_state_changed)
+var _js_on_interstitial_state_changed = JavaScriptBridge.create_callback(self._on_interstitial_state_changed)
+var _js_on_rewarded_state_changed = JavaScriptBridge.create_callback(self._on_rewarded_state_changed)
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 var _check_adblock_callback = null
-var _js_check_adblock_then = JavaScript.create_callback(self, "_on_js_check_adblock_then")
-var _js_check_adblock_catch = JavaScript.create_callback(self, "_on_js_check_adblock_catch")
+var _js_check_adblock_then = JavaScriptBridge.create_callback(self._on_js_check_adblock_then)
+var _js_check_adblock_catch = JavaScriptBridge.create_callback(self._on_js_check_adblock_catch)
 
 
 func set_minimum_delay_between_interstitial(value):
@@ -73,10 +73,7 @@ func check_adblock(callback):
 		return
 	
 	_check_adblock_callback = callback
-
-	_js_advertisement.checkAdBlock() \
-		.then(_js_check_adblock_then) \
-		.catch(_js_check_adblock_catch)
+	_js_advertisement.checkAdBlock().then(_js_check_adblock_then).catch(_js_check_adblock_catch)
 
 
 func _init(js_advertisement):
@@ -100,12 +97,12 @@ func _on_js_check_adblock_then(args):
 		var data_type = typeof(data)
 		match data_type:
 			TYPE_BOOL:
-				_check_adblock_callback.call_func(data)
+				_check_adblock_callback.call(data)
 			_:
-				_check_adblock_callback.call_func(false)
+				_check_adblock_callback.call(false)
 		_check_adblock_callback = null
 
 func _on_js_check_adblock_catch(args):
 	if _check_adblock_callback != null:
-		_check_adblock_callback.call_func(false)
+		_check_adblock_callback.call(false)
 		_check_adblock_callback = null

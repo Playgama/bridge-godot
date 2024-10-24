@@ -1,125 +1,112 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://rn7ol5kkv2l"]
 
-[ext_resource path="res://examples/scenes/detailed_scene_base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://examples/scenes/storage.gd" type="Script" id=2]
-[ext_resource path="res://examples/fonts/default_font.tres" type="DynamicFont" id=3]
+[ext_resource type="PackedScene" path="res://examples/scenes/detailed_scene_base.tscn" id="1"]
+[ext_resource type="Script" path="res://examples/scenes/storage.gd" id="2"]
+[ext_resource type="FontFile" path="res://examples/fonts/default_font.tres" id="3"]
 
-[node name="Storage" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="Storage" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="MarginContainer" parent="." index="0"]
+anchors_preset = 10
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" parent="MarginContainer" index="0"]
+layout_mode = 2
+
+[node name="BackButton" parent="MarginContainer/HBoxContainer" index="0"]
+layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
+anchors_preset = 10
 anchor_right = 1.0
-margin_left = 20.0
-margin_top = 90.0
-margin_right = -20.0
-margin_bottom = 520.0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = -20.0
+offset_bottom = 520.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
-margin_right = 920.0
-margin_bottom = 430.0
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="DefaultStorageType" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
-margin_right = 920.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Default Storage Type:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
-margin_top = 48.0
-margin_right = 920.0
-margin_bottom = 76.0
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="IsLocalStorageSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 254.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Is Local Storage Supported:"
 
 [node name="IsLocalStorageAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 274.0
-margin_right = 514.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Is Local Storage Available:"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
-margin_top = 96.0
-margin_right = 920.0
-margin_bottom = 124.0
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="IsPlatformInternalSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="0"]
-margin_right = 288.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Is Platform Internal Supported:"
 
 [node name="IsPlatformInternalAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="1"]
-margin_left = 308.0
-margin_right = 582.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Is Platform Internal Available:"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="3"]
-margin_top = 144.0
-margin_right = 920.0
-margin_bottom = 194.0
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="CoinsInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
-margin_right = 130.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 130, 50 )
-custom_fonts/font = ExtResource( 3 )
-align = 1
+custom_minimum_size = Vector2(130, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 placeholder_text = "Coins count"
 
 [node name="LevelIdInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="1"]
-margin_left = 150.0
-margin_right = 280.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 130, 50 )
-custom_fonts/font = ExtResource( 3 )
-align = 1
+custom_minimum_size = Vector2(130, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 placeholder_text = "Level id"
 
 [node name="TutorialCheckbox" type="CheckBox" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="2"]
-margin_left = 300.0
-margin_right = 528.0
-margin_bottom = 50.0
-custom_fonts/font = ExtResource( 3 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Is Tutorial Completed"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
-margin_top = 214.0
-margin_right = 920.0
-margin_bottom = 264.0
-custom_constants/separation = 20
+layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="LoadDataButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="0"]
-margin_right = 106.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Load Data"
 
 [node name="SaveDataButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="1"]
-margin_left = 126.0
-margin_right = 230.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Save Data"
 
 [node name="DeleteDataButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="2"]
-margin_left = 250.0
-margin_right = 371.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3")
 text = "Delete Data"
 
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/LoadDataButton" to="." method="_on_load_data_button_pressed"]

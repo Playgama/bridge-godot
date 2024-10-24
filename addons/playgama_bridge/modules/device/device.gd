@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Playgama Bridge. If not, see <https://www.gnu.org/licenses/>.
 
-var type setget , _type_getter
+var type : get = _type_getter
 
 var _js_device = null
 

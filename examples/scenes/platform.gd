@@ -1,11 +1,11 @@
 extends DetailedSceneBase
 
 
-onready var id_label = $MarginContainer2/VBoxContainer/PlatformID
-onready var language_label = $MarginContainer2/VBoxContainer/Language
-onready var payload_label = $MarginContainer2/VBoxContainer/Payload
-onready var tld_label = $MarginContainer2/VBoxContainer/Tld
-onready var server_time_label = $MarginContainer2/VBoxContainer/HBoxContainer4/ServerTimeLabel
+@onready var id_label = $MarginContainer2/VBoxContainer/PlatformID
+@onready var language_label = $MarginContainer2/VBoxContainer/Language
+@onready var payload_label = $MarginContainer2/VBoxContainer/Payload
+@onready var tld_label = $MarginContainer2/VBoxContainer/Tld
+@onready var server_time_label = $MarginContainer2/VBoxContainer/HBoxContainer4/ServerTimeLabel
 
 
 func _ready():
@@ -34,7 +34,7 @@ func _on_send_player_got_achievement_button_pressed():
 	Bridge.platform.send_message(Bridge.PlatformMessage.PLAYER_GOT_ACHIEVEMENT)
 
 func _on_get_server_time_button_pressed():
-	Bridge.platform.get_server_time(funcref(self, "_on_get_server_time_completed"))
+	Bridge.platform.get_server_time(Callable(self, "_on_get_server_time_completed"))
 
 func _on_get_server_time_completed(milliseconds):
 	server_time_label.text = "Server Time (UTC): " + str(milliseconds)

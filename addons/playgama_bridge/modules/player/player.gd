@@ -13,11 +13,11 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Playgama Bridge. If not, see <https://www.gnu.org/licenses/>.
 
-var is_authorization_supported setget , _is_authorization_supported_getter
-var is_authorized setget , _is_authorized_getter
-var id setget , _id_getter
-var name setget , _name_getter
-var photos setget , _photos_getter
+var is_authorization_supported : get = _is_authorization_supported_getter
+var is_authorized : get = _is_authorized_getter
+var id : get = _id_getter
+var name : get = _name_getter
+var photos : get = _photos_getter
 
 
 func _is_authorization_supported_getter():
@@ -39,8 +39,8 @@ func _photos_getter():
 	return array
 
 var _js_player = null
-var _js_authorize_then = JavaScript.create_callback(self, "_on_js_authorize_then")
-var _js_authorize_catch = JavaScript.create_callback(self, "_on_js_authorize_catch")
+var _js_authorize_then = JavaScriptBridge.create_callback(self._on_js_authorize_then)
+var _js_authorize_catch = JavaScriptBridge.create_callback(self._on_js_authorize_catch)
 var _authorize_callback = null
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
@@ -55,9 +55,7 @@ func authorize(options = null, callback = null):
 	if options:
 		js_options = _utils.convert_to_js(options)
 	
-	_js_player.authorize(js_options) \
-		.then(_js_authorize_then) \
-		.catch(_js_authorize_catch)
+	_js_player.authorize(js_options).then(_js_authorize_then).catch(_js_authorize_catch)
 
 
 func _init(js_player):
@@ -65,10 +63,10 @@ func _init(js_player):
 
 func _on_js_authorize_then(args):
 	if _authorize_callback != null:
-		_authorize_callback.call_func(true)
+		_authorize_callback.call(true)
 		_authorize_callback = null
 
 func _on_js_authorize_catch(args):
 	if _authorize_callback != null:
-		_authorize_callback.call_func(false)
+		_authorize_callback.call(false)
 		_authorize_callback = null

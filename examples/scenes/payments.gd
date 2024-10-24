@@ -1,7 +1,7 @@
 extends DetailedSceneBase
 
 
-onready var is_payments_supported_label = $MarginContainer2/VBoxContainer/IsPaymentsSupported
+@onready var is_payments_supported_label = $MarginContainer2/VBoxContainer/IsPaymentsSupported
 
 
 func _ready():
@@ -17,7 +17,7 @@ func _on_purchase_button_pressed():
 				"id": "PRODUCT_ID"
 			}
 	
-	Bridge.payments.purchase(options, funcref(self, "_on_purchase_completed"))
+	Bridge.payments.purchase(options, Callable(self, "_on_purchase_completed"))
 	
 func _on_purchase_completed(success):
 	print(success)
@@ -32,14 +32,14 @@ func _on_consume_button_pressed():
 				"purchaseToken": "PURCHASE_TOKEN"
 			}
 
-	Bridge.payments.consume_purchase(options, funcref(self, "_on_consume_completed"))
+	Bridge.payments.consume_purchase(options, Callable(self, "_on_consume_completed"))
 	
 func _on_consume_completed(success):
 	print(success)
 
 
 func _on_get_catalog_button_pressed():
-	Bridge.payments.get_catalog(funcref(self, "_on_get_catalog_completed"))
+	Bridge.payments.get_catalog(Callable(self, "_on_get_catalog_completed"))
 	
 func _on_get_catalog_completed(success, catalog):
 	print(success)
@@ -58,7 +58,7 @@ func _on_get_catalog_completed(success, catalog):
 
 
 func _on_get_purchases_button_pressed():
-	Bridge.payments.get_purchases(funcref(self, "_on_get_purchases_completed"))
+	Bridge.payments.get_purchases(Callable(self, "_on_get_purchases_completed"))
 	
 func _on_get_purchases_completed(success, purchases):
 	print(success)

@@ -65,16 +65,16 @@ const RewardedState = {
 }
 
 
-var platform setget , _platform_getter
-var device setget , _device_getter
-var player setget , _player_getter
-var game setget , _game_getter
-var storage setget , _storage_getter
-var advertisement setget , _advertisement_getter
-var social setget , _social_getter
-var leaderboard setget , _leaderboard_getter
-var payments setget , _payments_getter
-var remote_config setget , _remote_config_getter
+var platform : get = _platform_getter
+var device : get = _device_getter
+var player : get = _player_getter
+var game : get = _game_getter
+var storage : get = _storage_getter
+var advertisement : get = _advertisement_getter
+var social : get = _social_getter
+var leaderboard : get = _leaderboard_getter
+var payments : get = _payments_getter
+var remote_config : get = _remote_config_getter
 
 
 func _platform_getter():
@@ -120,8 +120,8 @@ var _remote_config = null
 
 
 func _ready():
-	if OS.has_feature("JavaScript"):
-		var js_bridge = JavaScript.get_interface("bridge")
+	if OS.has_feature("web"):
+		var js_bridge = JavaScriptBridge.get_interface("bridge")
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform.gd").new(js_bridge.platform)
 		_device = load("res://addons/playgama_bridge/modules/device/device.gd").new(js_bridge.device)
 		_player = load("res://addons/playgama_bridge/modules/player/player.gd").new(js_bridge.player)

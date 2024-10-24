@@ -17,11 +17,11 @@ signal banner_state_changed
 signal interstitial_state_changed
 signal rewarded_state_changed
 
-var minimum_delay_between_interstitial setget , _minimum_delay_between_interstitial_getter
-var is_banner_supported setget , _is_banner_supported_getter
-var banner_state setget , _banner_state_getter
-var interstitial_state setget , _interstitial_state_getter
-var rewarded_state setget , _rewarded_state_getter
+var minimum_delay_between_interstitial : get = _minimum_delay_between_interstitial_getter
+var is_banner_supported : get = _is_banner_supported_getter
+var banner_state : get = _banner_state_getter
+var interstitial_state : get = _interstitial_state_getter
+var rewarded_state : get = _rewarded_state_getter
 
 
 func _minimum_delay_between_interstitial_getter():
@@ -72,7 +72,7 @@ func show_rewarded():
 
 func check_adblock(callback):
 	if callback != null:
-		callback.call_func(false)
+		callback.call(false)
 
 
 func _set_banner_state(state):

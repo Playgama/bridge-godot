@@ -13,16 +13,16 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Playgama Bridge. If not, see <https://www.gnu.org/licenses/>.
 
-var id setget , _id_getter
-var payload setget , _payload_getter
-var language setget , _language_getter
-var tld setget , _tld_getter
+var id : get = _id_getter
+var payload : get = _payload_getter
+var language : get = _language_getter
+var tld : get = _tld_getter
 
 
 var _js_platform = null
 var _get_server_time_callback = null
-var _js_get_server_time_then = JavaScript.create_callback(self, "_on_js_get_server_time_then")
-var _js_get_server_time_catch = JavaScript.create_callback(self, "_on_js_get_server_time_catch")
+var _js_get_server_time_then = JavaScriptBridge.create_callback(self._on_js_get_server_time_then)
+var _js_get_server_time_catch = JavaScriptBridge.create_callback(self._on_js_get_server_time_catch)
 
 func _id_getter():
 	return _js_platform.id
@@ -48,10 +48,7 @@ func get_server_time(callback):
 		return
 	
 	_get_server_time_callback = callback
-
-	_js_platform.getServerTime() \
-		.then(_js_get_server_time_then) \
-		.catch(_js_get_server_time_catch)
+	_js_platform.getServerTime().then(_js_get_server_time_then).catch(_js_get_server_time_catch)
 
 
 func _on_js_get_server_time_then(args):
@@ -60,12 +57,12 @@ func _on_js_get_server_time_then(args):
 		var data_type = typeof(data)
 		match data_type:
 			TYPE_INT:
-				_get_server_time_callback.call_func(data)
+				_get_server_time_callback.call(data)
 			_:
-				_get_server_time_callback.call_func(0)
+				_get_server_time_callback.call(0)
 		_get_server_time_callback = null
 
 func _on_js_get_server_time_catch(args):
 	if _get_server_time_callback != null:
-		_get_server_time_callback.call_func(0)
+		_get_server_time_callback.call(0)
 		_get_server_time_callback = null

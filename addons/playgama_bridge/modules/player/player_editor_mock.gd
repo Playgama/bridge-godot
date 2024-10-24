@@ -13,11 +13,11 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Playgama Bridge. If not, see <https://www.gnu.org/licenses/>.
 
-var is_authorization_supported setget , _is_authorization_supported_getter
-var is_authorized setget , _is_authorized_getter
-var id setget , _id_getter
-var name setget , _name_getter
-var photos setget , _photos_getter
+var is_authorization_supported : get = _is_authorization_supported_getter
+var is_authorized : get = _is_authorized_getter
+var id : get = _id_getter
+var name : get = _name_getter
+var photos : get = _photos_getter
 
 
 func _is_authorization_supported_getter():
@@ -38,4 +38,4 @@ func _photos_getter():
 
 func authorize(options = null, callback = null):
 	if callback != null:
-		callback.call_func(false)
+		callback.call(false)

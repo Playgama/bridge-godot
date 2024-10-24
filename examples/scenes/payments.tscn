@@ -2,64 +2,64 @@
 
 [ext_resource path="res://examples/scenes/detailed_scene_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://examples/scenes/payments.gd" type="Script" id=2]
-[ext_resource path="res://examples/fonts/default_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://examples/fonts/default_font.tres" type="FontFile" id=3]
 
 [node name="Payments" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
 anchor_right = 1.0
-margin_left = 20.0
-margin_top = 90.0
-margin_right = -20.0
-margin_bottom = 520.0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = -20.0
+offset_bottom = 520.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
-margin_right = 920.0
-margin_bottom = 430.0
-custom_constants/separation = 20
+offset_right = 920.0
+offset_bottom = 430.0
+theme_override_constants/separation = 20
 
 [node name="IsPaymentsSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
-margin_right = 920.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+offset_right = 920.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Payments Supported:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
-margin_top = 48.0
-margin_right = 920.0
-margin_bottom = 98.0
-custom_constants/separation = 20
+offset_top = 48.0
+offset_right = 920.0
+offset_bottom = 98.0
+theme_override_constants/separation = 20
 
 [node name="PurchaseButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 98.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_right = 98.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Purchase"
 
 [node name="ConsumeButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 118.0
-margin_right = 219.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = 118.0
+offset_right = 219.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Consume"
 
 [node name="GetCatalogButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="2"]
-margin_left = 239.0
-margin_right = 360.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = 239.0
+offset_right = 360.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Get Catalog"
 
 [node name="GetPurchasesButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="3"]
-margin_left = 380.0
-margin_right = 526.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = 380.0
+offset_right = 526.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Get Purchases"
 
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/PurchaseButton" to="." method="_on_purchase_button_pressed"]

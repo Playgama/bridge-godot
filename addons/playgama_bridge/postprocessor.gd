@@ -16,6 +16,7 @@
 extends EditorExportPlugin
 
 const INDEX_FILE_NAME = "index.html"
+const TMP_JS_EXPORT_INDEX_FILE_NAME = "tmp_js_export.html"
 const JS_SDK_FILE_NAME = "playgama-bridge.js"
 const JS_SDK_PATH = "res://addons/playgama_bridge/template/" + JS_SDK_FILE_NAME
 const SETTINGS_PATH = "addons/playgama_bridge/general/"
@@ -26,15 +27,16 @@ const SETTINGS_ADSGRAM_BLOCK_ID_KEY = "adsgram_block_id"
 
 var _path = null
 
+func _get_name() -> String:
+	return "Bridge"
+
 func _export_begin(features, is_debug, path, flags):
 	if features.has("web"):
 		_path = path
 		
-		var file_from = File.new()
-		file_from.open(JS_SDK_PATH, File.READ)
+		var file_from = FileAccess.open(JS_SDK_PATH, FileAccess.READ)
 		
-		var file_to = File.new()
-		file_to.open(path.get_base_dir() + "/" + JS_SDK_FILE_NAME, File.WRITE)
+		var file_to = FileAccess.open(path.get_base_dir() + "/" + JS_SDK_FILE_NAME, FileAccess.WRITE)
 		file_to.store_string(file_from.get_as_text())
 		
 		file_from = null
@@ -61,8 +63,9 @@ func _export_end():
 	if ProjectSettings.has_setting(SETTINGS_PATH + SETTINGS_ADSGRAM_BLOCK_ID_KEY):
 		adsgram_block_id = ProjectSettings.get(SETTINGS_PATH + SETTINGS_ADSGRAM_BLOCK_ID_KEY)
 	
-	var index = File.new()
-	index.open(_path.get_base_dir() + "/" + INDEX_FILE_NAME, File.READ_WRITE)
+	var index = FileAccess.open(_path.get_base_dir() + "/" + INDEX_FILE_NAME, FileAccess.READ_WRITE)
+	if not index:
+		index = FileAccess.open(_path.get_base_dir() + "/" + TMP_JS_EXPORT_INDEX_FILE_NAME, FileAccess.READ_WRITE)
 	
 	var content = index.get_as_text()
 	content = content.format({"game_distribution_game_id":game_distribution_game_id})

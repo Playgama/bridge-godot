@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Playgama Bridge. If not, see <https://www.gnu.org/licenses/>.
 
-var is_supported setget , _is_supported_getter
+var is_supported : get = _is_supported_getter
 
 
 func _is_supported_getter():
@@ -22,16 +22,16 @@ func _is_supported_getter():
 
 func purchase(options = null, callback = null):
 	if callback != null:
-		callback.call_func(false)
+		callback.call(false)
 
 func consume_purchase(options = null, callback = null):
 	if callback != null:
-		callback.call_func(false)
+		callback.call(false)
 
 func get_catalog(callback = null):
 	if callback != null:
-		callback.call_func(false, [])
+		callback.call(false, [])
 
 func get_purchases(callback = null):
 	if callback != null:
-		callback.call_func(false, [])
+		callback.call(false, [])

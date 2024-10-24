@@ -13,10 +13,10 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with Playgama Bridge. If not, see <https://www.gnu.org/licenses/>.
 
-var id setget , _id_getter
-var payload setget , _payload_getter
-var language setget , _language_getter
-var tld setget , _tld_getter
+var id : get = _id_getter
+var payload : get = _payload_getter
+var language : get = _language_getter
+var tld : get = _tld_getter
 
 func _id_getter():
 	return "mock"
@@ -35,4 +35,4 @@ func send_message(message):
 
 func get_server_time(callback):
 	if callback != null:
-		callback.call_func(Time.get_unix_time_from_system() * 1000)
+		callback.call(Time.get_unix_time_from_system() * 1000)

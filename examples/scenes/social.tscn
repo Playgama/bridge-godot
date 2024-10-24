@@ -2,156 +2,156 @@
 
 [ext_resource path="res://examples/scenes/detailed_scene_base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://examples/scenes/social.gd" type="Script" id=2]
-[ext_resource path="res://examples/fonts/default_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://examples/fonts/default_font.tres" type="FontFile" id=3]
 
 [node name="Social" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
 anchor_right = 1.0
-margin_left = 20.0
-margin_top = 90.0
-margin_right = -20.0
-margin_bottom = 520.0
+offset_left = 20.0
+offset_top = 90.0
+offset_right = -20.0
+offset_bottom = 520.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
-margin_right = 920.0
-margin_bottom = 430.0
-custom_constants/separation = 20
+offset_right = 920.0
+offset_bottom = 430.0
+theme_override_constants/separation = 20
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="0"]
-margin_right = 920.0
-margin_bottom = 172.0
-custom_constants/separation = 20
+offset_right = 920.0
+offset_bottom = 172.0
+theme_override_constants/separation = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
-margin_right = 277.0
-margin_bottom = 172.0
-custom_constants/separation = 20
+offset_right = 277.0
+offset_bottom = 172.0
+theme_override_constants/separation = 20
 
 [node name="IsShareSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer" index="0"]
-margin_right = 277.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+offset_right = 277.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Share Supported:"
 
 [node name="IsJoinCommunitySupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer" index="1"]
-margin_top = 48.0
-margin_right = 277.0
-margin_bottom = 76.0
-custom_fonts/font = ExtResource( 3 )
+offset_top = 48.0
+offset_right = 277.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Join Community Supported:"
 
 [node name="IsInviteFriendsSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer" index="2"]
-margin_top = 96.0
-margin_right = 277.0
-margin_bottom = 124.0
-custom_fonts/font = ExtResource( 3 )
+offset_top = 96.0
+offset_right = 277.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Invite Friends Supported:"
 
 [node name="IsCreatePostSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer" index="3"]
-margin_top = 144.0
-margin_right = 277.0
-margin_bottom = 172.0
-custom_fonts/font = ExtResource( 3 )
+offset_top = 144.0
+offset_right = 277.0
+offset_bottom = 172.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Create Post Supported:"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="1"]
-margin_left = 297.0
-margin_right = 621.0
-margin_bottom = 172.0
-custom_constants/separation = 20
+offset_left = 297.0
+offset_right = 621.0
+offset_bottom = 172.0
+theme_override_constants/separation = 20
 
 [node name="IsAddToFavoritesSupported2" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2" index="0"]
-margin_right = 324.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
+offset_right = 324.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Add To Favorites Supported:"
 
 [node name="IsAddToHomeScreenSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2" index="1"]
-margin_top = 48.0
-margin_right = 324.0
-margin_bottom = 76.0
-custom_fonts/font = ExtResource( 3 )
+offset_top = 48.0
+offset_right = 324.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Add To Home Screen Supported:"
 
 [node name="IsRateSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2" index="2"]
-margin_top = 96.0
-margin_right = 324.0
-margin_bottom = 124.0
-custom_fonts/font = ExtResource( 3 )
+offset_top = 96.0
+offset_right = 324.0
+offset_bottom = 124.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is Rate Supported:"
 
 [node name="IsExternalLinksAllowed" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2" index="3"]
-margin_top = 144.0
-margin_right = 324.0
-margin_bottom = 172.0
-custom_fonts/font = ExtResource( 3 )
+offset_top = 144.0
+offset_right = 324.0
+offset_bottom = 172.0
+theme_override_fonts/font = ExtResource( 3 )
 text = "Is External Links Allowed:"
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer2/VBoxContainer" index="1"]
-margin_top = 192.0
-margin_right = 920.0
-margin_bottom = 382.0
-custom_constants/vseparation = 20
-custom_constants/hseparation = 20
+offset_top = 192.0
+offset_right = 920.0
+offset_bottom = 382.0
+theme_override_constants/v_separation = 20
+theme_override_constants/h_separation = 20
 columns = 3
 
 [node name="ShareButton" type="Button" parent="MarginContainer2/VBoxContainer/GridContainer" index="0"]
-margin_right = 119.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_right = 119.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Share"
 
 [node name="JoinCommunityButton" type="Button" parent="MarginContainer2/VBoxContainer/GridContainer" index="1"]
-margin_left = 139.0
-margin_right = 305.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = 139.0
+offset_right = 305.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Join Community"
 
 [node name="InviteFriendsButton" type="Button" parent="MarginContainer2/VBoxContainer/GridContainer" index="2"]
-margin_left = 325.0
-margin_right = 532.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = 325.0
+offset_right = 532.0
+offset_bottom = 50.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Invite Friends"
 
 [node name="CreatePostButton" type="Button" parent="MarginContainer2/VBoxContainer/GridContainer" index="3"]
-margin_top = 70.0
-margin_right = 119.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_top = 70.0
+offset_right = 119.0
+offset_bottom = 120.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Create Post"
 
 [node name="AddToFavoritesButton" type="Button" parent="MarginContainer2/VBoxContainer/GridContainer" index="4"]
-margin_left = 139.0
-margin_top = 70.0
-margin_right = 305.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = 139.0
+offset_top = 70.0
+offset_right = 305.0
+offset_bottom = 120.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Add To Favorites"
 
 [node name="AddToHomeScreenButton" type="Button" parent="MarginContainer2/VBoxContainer/GridContainer" index="5"]
-margin_left = 325.0
-margin_top = 70.0
-margin_right = 532.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_left = 325.0
+offset_top = 70.0
+offset_right = 532.0
+offset_bottom = 120.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Add To Home Screen"
 
 [node name="RateButton" type="Button" parent="MarginContainer2/VBoxContainer/GridContainer" index="6"]
-margin_top = 140.0
-margin_right = 119.0
-margin_bottom = 190.0
-rect_min_size = Vector2( 0, 50 )
-custom_fonts/font = ExtResource( 3 )
+offset_top = 140.0
+offset_right = 119.0
+offset_bottom = 190.0
+custom_minimum_size = Vector2( 0, 50 )
+theme_override_fonts/font = ExtResource( 3 )
 text = "Rate"
 
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/GridContainer/ShareButton" to="." method="_on_share_button_pressed"]

@@ -1,8 +1,8 @@
 extends DetailedSceneBase
 
 
-onready var is_leaderboard_supported_label = $MarginContainer2/VBoxContainer/IsLeaderboardSupported
-onready var player_score_label = $MarginContainer2/VBoxContainer/PlayerScore
+@onready var is_leaderboard_supported_label = $MarginContainer2/VBoxContainer/IsLeaderboardSupported
+@onready var player_score_label = $MarginContainer2/VBoxContainer/PlayerScore
 
 var current_player_score = 0
 
@@ -23,7 +23,7 @@ func _on_increment_player_score_button_pressed():
 				"score": current_player_score
 			}
 	
-	Bridge.leaderboard.set_score(options, funcref(self, "_on_set_score_completed"))
+	Bridge.leaderboard.set_score(options, Callable(self, "_on_set_score_completed"))
 	player_score_label.text = "Player Score: " + str(current_player_score)
 
 func _on_set_score_completed(success):
@@ -39,7 +39,7 @@ func _on_get_player_score_button_pressed():
 				"leaderboardName": "YOUR_LEADERBOARD_NAME_HERE"
 			}
 
-	Bridge.leaderboard.get_score(options, funcref(self, "_on_get_score_completed"))
+	Bridge.leaderboard.get_score(options, Callable(self, "_on_get_score_completed"))
 
 func _on_get_score_completed(success, score):
 	current_player_score = score
@@ -58,7 +58,7 @@ func _on_get_entries_button_pressed():
 				"quantityTop": 10
 			}
 	
-	Bridge.leaderboard.get_entries(options , funcref(self, "_on_get_entries_completed"))
+	Bridge.leaderboard.get_entries(options , Callable(self, "_on_get_entries_completed"))
 
 func _on_get_entries_completed(success, entries):
 	print(success)

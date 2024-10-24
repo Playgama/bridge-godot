@@ -1,13 +1,13 @@
 extends DetailedSceneBase
 
-onready var is_share_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsShareSupported
-onready var is_join_community_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsJoinCommunitySupported
-onready var is_invite_friends_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsInviteFriendsSupported
-onready var is_create_post_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsCreatePostSupported
-onready var is_add_to_favorites_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsAddToFavoritesSupported2
-onready var is_add_to_home_screen_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsAddToHomeScreenSupported
-onready var is_rate_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsRateSupported
-onready var is_external_links_allowed = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsExternalLinksAllowed
+@onready var is_share_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsShareSupported
+@onready var is_join_community_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsJoinCommunitySupported
+@onready var is_invite_friends_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsInviteFriendsSupported
+@onready var is_create_post_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer/IsCreatePostSupported
+@onready var is_add_to_favorites_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsAddToFavoritesSupported2
+@onready var is_add_to_home_screen_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsAddToHomeScreenSupported
+@onready var is_rate_supported = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsRateSupported
+@onready var is_external_links_allowed = $MarginContainer2/VBoxContainer/HBoxContainer2/VBoxContainer2/IsExternalLinksAllowed
 
 
 

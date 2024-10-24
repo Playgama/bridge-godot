@@ -14,10 +14,10 @@
 # along with Playgama Bridge. If not, see <https://www.gnu.org/licenses/>.
 
 signal visibility_state_changed
-var visibility_state setget , _visibility_state_getter
+var visibility_state : get = _visibility_state_getter
 
 var _js_game = null
-var _js_on_visibility_state_changed = JavaScript.create_callback(self, "_on_visibility_state_changed")
+var _js_on_visibility_state_changed = JavaScriptBridge.create_callback(self._on_visibility_state_changed)
 
 func _visibility_state_getter():
 	return _js_game.visibilityState

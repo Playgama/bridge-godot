@@ -18,7 +18,7 @@ func convert_to_js(data):
 	
 	match data_type:
 		TYPE_DICTIONARY:
-			var js_object = JavaScript.create_object("Object")
+			var js_object = JavaScriptBridge.create_object("Object")
 			
 			for key in data:
 				js_object[key] = convert_to_js(data[key])
@@ -26,7 +26,7 @@ func convert_to_js(data):
 			return js_object
 		
 		TYPE_ARRAY:
-			var js_array = JavaScript.create_object("Array")
+			var js_array = JavaScriptBridge.create_object("Array")
 			
 			for i in range(data.size()):
 				js_array[i] = convert_to_js(data[i])

@@ -1,7 +1,7 @@
 extends DetailedSceneBase
 
 
-onready var is_remote_config_supported_label = $MarginContainer2/VBoxContainer/IsRemoteConfigSupported
+@onready var is_remote_config_supported_label = $MarginContainer2/VBoxContainer/IsRemoteConfigSupported
 
 
 func _ready():
@@ -20,7 +20,7 @@ func _on_get_button_pressed():
 				]
 			}
 
-	Bridge.remote_config.get(options, funcref(self, "_on_remote_config_get_completed"))
+	Bridge.remote_config.get(options, Callable(self, "_on_remote_config_get_completed"))
 
 func _on_remote_config_get_completed(success, data):
 	print(success)
