@@ -116,12 +116,6 @@
             visibility: visible;
         }
 
-        #banner-container {
-            position: absolute;
-            bottom: 0px;
-            width: 100%;
-            height: 90px;
-        }
     </style>
 $GODOT_HEAD_INCLUDE
 </head>
@@ -130,7 +124,6 @@ $GODOT_HEAD_INCLUDE
         HTML5 canvas appears to be unsupported in the current browser.<br />
         Please try updating or use a different browser.
     </canvas>
-    <div id="banner-container" style="display: none"></div>
     <div id='status'>
         <div id='status-progress' style='display: none;' oncontextmenu='event.preventDefault();'><div id ='status-progress-inner'></div></div>
         <div id='status-indeterminate' style='display: none;' oncontextmenu='event.preventDefault();'>
@@ -254,16 +247,6 @@ $GODOT_HEAD_INCLUDE
                 }
                 
                 bridge.initialize(bridgeOptions).then(() => {
-                    let bannerContainer = document.getElementById('banner-container')
-
-                    if (bridge.platform.id === bridge.PLATFORM_ID.CRAZY_GAMES || bridge.platform.id === bridge.PLATFORM_ID.GAME_DISTRIBUTION) {
-                        bridge.advertisement.on(bridge.EVENT_NAME.BANNER_STATE_CHANGED, state => {
-                            bannerContainer.style.display = state === 'loading' || state === 'shown' ? 'block' : 'none'
-                        })
-                    } else {
-                        bannerContainer.style.display = 'none'
-                    }
-
                     if (bridge.platform.id === bridge.PLATFORM_ID.GAME_DISTRIBUTION) {
                         bridge.advertisement.showInterstitial()
                     }
