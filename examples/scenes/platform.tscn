@@ -16,7 +16,7 @@ margin_bottom = 520.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
 margin_right = 920.0
-margin_bottom = 430.0
+margin_bottom = 618.0
 custom_constants/separation = 20
 
 [node name="PlatformID" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
@@ -43,13 +43,30 @@ text = "Payload:"
 margin_top = 144.0
 margin_right = 920.0
 margin_bottom = 172.0
+rect_pivot_offset = Vector2( -711, -50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Tld:"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
+[node name="IsGetAllGamesSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="4"]
 margin_top = 192.0
 margin_right = 920.0
-margin_bottom = 242.0
+margin_bottom = 220.0
+rect_pivot_offset = Vector2( -711, -50 )
+custom_fonts/font = ExtResource( 3 )
+text = "Is Get All Games Supported:"
+
+[node name="IsGameByIdSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="5"]
+margin_top = 240.0
+margin_right = 920.0
+margin_bottom = 268.0
+rect_pivot_offset = Vector2( -711, -50 )
+custom_fonts/font = ExtResource( 3 )
+text = "Is Game By Id Supported:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="6"]
+margin_top = 288.0
+margin_right = 920.0
+margin_bottom = 338.0
 custom_constants/separation = 20
 
 [node name="SendGameReadyButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
@@ -75,10 +92,10 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Send In Game Loading Stopped"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="5"]
-margin_top = 262.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="7"]
+margin_top = 358.0
 margin_right = 920.0
-margin_bottom = 312.0
+margin_bottom = 408.0
 custom_constants/separation = 20
 
 [node name="SendGameplayStartedButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="0"]
@@ -104,10 +121,10 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Send Player Got Achievement"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="6"]
-margin_top = 332.0
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="8"]
+margin_top = 428.0
 margin_right = 920.0
-margin_bottom = 382.0
+margin_bottom = 478.0
 custom_constants/separation = 20
 
 [node name="ServerTimeLabel" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="0"]
@@ -125,6 +142,53 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Get Server Time"
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="9"]
+margin_top = 498.0
+margin_right = 920.0
+margin_bottom = 548.0
+custom_constants/separation = 20
+
+[node name="IsGetAllGamesSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer5" index="0"]
+margin_top = 11.0
+margin_right = 99.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 3 )
+text = "All Games:"
+
+[node name="GetAllGamesButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer5" index="1"]
+margin_left = 119.0
+margin_right = 263.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 3 )
+text = "Get All Games"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="10"]
+margin_top = 568.0
+margin_right = 920.0
+margin_bottom = 618.0
+custom_constants/separation = 20
+
+[node name="IsGetGameByIdSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer6" index="0"]
+margin_top = 11.0
+margin_right = 113.0
+margin_bottom = 39.0
+custom_fonts/font = ExtResource( 3 )
+text = "Game By Id:"
+
+[node name="GameIdInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer6" index="1"]
+margin_left = 133.0
+margin_right = 191.0
+margin_bottom = 50.0
+
+[node name="GameByIdButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer6" index="2"]
+margin_left = 211.0
+margin_right = 369.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 3 )
+text = "Get Game By Id"
+
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/SendGameReadyButton" to="." method="_on_send_game_ready_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/SendInGameLoadingStartedButton" to="." method="_on_send_in_game_loading_started_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer2/SendInGameLoadingStoppedButton" to="." method="_on_send_in_game_loading_stopped_button_pressed"]
@@ -132,3 +196,5 @@ text = "Get Server Time"
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/SendGameplayStoppedButton" to="." method="_on_send_gameplay_stopped_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer3/SendPlayerGotAchievementButton" to="." method="_on_send_player_got_achievement_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer4/GetServerTimeButton" to="." method="_on_get_server_time_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer5/GetAllGamesButton" to="." method="_on_get_all_games_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer6/GameByIdButton" to="." method="_on_get_game_by_id_button_pressed"]
