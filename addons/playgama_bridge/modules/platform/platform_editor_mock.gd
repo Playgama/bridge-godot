@@ -20,6 +20,12 @@ func _tld_getter():
 func send_message(message):
 	pass
 
+func _is_get_all_games_supported_getter():
+	return false
+
+func _is_get_game_by_id_supported_getter():
+	return false
+
 func get_server_time(callback):
 	if callback != null:
 		callback.call_func(Time.get_unix_time_from_system() * 1000)
