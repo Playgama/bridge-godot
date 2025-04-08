@@ -1,4 +1,5 @@
 var is_supported setget , _is_supported_getter
+var is_available setget , _is_available_getter
 var is_get_catalog_supported setget , _is_get_catalog_supported_getter
 var is_get_purchases_supported setget , _is_get_purchases_supported_getter
 var is_consume_purchase_supported setget , _is_consume_purchase_supported_getter
@@ -6,6 +7,9 @@ var is_consume_purchase_supported setget , _is_consume_purchase_supported_getter
 
 func _is_supported_getter():
 	return _js_payments.isSupported
+
+func _is_available_getter():
+	return _js_payments.isAvailable
 
 func _is_get_catalog_supported_getter():
 	return _js_payments.isGetCatalogSupported

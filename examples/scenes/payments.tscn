@@ -25,31 +25,38 @@ margin_bottom = 28.0
 custom_fonts/font = ExtResource( 3 )
 text = "Is Payments Supported:"
 
-[node name="IsGetCatalogSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="1"]
+[node name="IsPaymentsAvailable" type="Label" parent="MarginContainer2/VBoxContainer" index="1"]
 margin_top = 48.0
 margin_right = 920.0
 margin_bottom = 76.0
 custom_fonts/font = ExtResource( 3 )
-text = "Is Get Catalog Supported:"
+text = "Is Payments Supported:"
 
-[node name="IsGetPurchasesSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="2"]
+[node name="IsGetCatalogSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="2"]
 margin_top = 96.0
 margin_right = 920.0
 margin_bottom = 124.0
 custom_fonts/font = ExtResource( 3 )
-text = "Is Get Purchases Supported:"
+text = "Is Get Catalog Supported:"
 
-[node name="IsConsumePurchaseSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="3"]
+[node name="IsGetPurchasesSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="3"]
 margin_top = 144.0
 margin_right = 920.0
 margin_bottom = 172.0
 custom_fonts/font = ExtResource( 3 )
-text = "Is Consume Purchase Supported:"
+text = "Is Get Purchases Supported:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
+[node name="IsConsumePurchaseSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="4"]
 margin_top = 192.0
 margin_right = 920.0
-margin_bottom = 242.0
+margin_bottom = 220.0
+custom_fonts/font = ExtResource( 3 )
+text = "Is Consume Purchase Supported:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="5"]
+margin_top = 240.0
+margin_right = 920.0
+margin_bottom = 290.0
 custom_constants/separation = 20
 
 [node name="PurchaseButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
