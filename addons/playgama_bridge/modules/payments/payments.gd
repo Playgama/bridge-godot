@@ -79,7 +79,7 @@ func _on_js_purchase_then(args):
 
 func _on_js_purchase_catch(args):
 	if _purchase_callback != null:
-		_purchase_callback.call_func(false)
+		_purchase_callback.call_func(false, null)
 		_purchase_callback = null
 
 func _on_js_consume_purchase_then(args):
