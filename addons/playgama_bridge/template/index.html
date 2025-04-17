@@ -223,30 +223,7 @@ $GODOT_HEAD_INCLUDE
             } else {
                 setStatusMode('indeterminate');
 
-                let bridgeOptions = {
-                    platforms: {
-                        'game_distribution': {
-                            gameId: '{game_distribution_game_id}'
-                        },
-                        'telegram': {
-                            adsgramBlockId: '{adsgram_block_id}'
-                        },
-                        'y8': {
-                            gameId: '{y8_game_id}',
-                            channelId: '{y8_channel_id}',
-                            adsenseId: '{y8_adsense_id}'
-                        },
-                        'lagged': {
-                            devId: '{lagged_dev_id}',
-                            publisherId: '{lagged_publisher_id}'
-                        },
-                        'facebook': {
-                            placementId: '{facebook_placement_id}'
-                        },
-                    }
-                }
-                
-                bridge.initialize(bridgeOptions).then(() => {
+                bridge.initialize().then(() => {
                     engine.startGame({
                     'onProgress': function (current, total) {
                         if (total > 0) {
@@ -271,4 +248,4 @@ $GODOT_HEAD_INCLUDE
         })();
     //]]></script>
 </body>
-</html>
+</html>                                                                                                                                                  

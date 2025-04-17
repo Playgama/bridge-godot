@@ -18,17 +18,6 @@ _global_script_class_icons={
 "DetailedSceneBase": ""
 }
 
-[addons]
-
-playgama_bridge/general/game_distribution_game_id=""
-playgama_bridge/general/adsgram_block_id=""
-playgama_bridge/general/y8_game_id=""
-playgama_bridge/general/y8_channel_id=""
-playgama_bridge/general/y8_adsense_id=""
-playgama_bridge/general/lagged_dev_id=""
-playgama_bridge/general/lagged_publisher_id=""
-playgama_bridge/general/facebook_placement_id=""
-
 [application]
 
 config/name="playgama-bridge"
