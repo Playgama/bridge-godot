@@ -20,7 +20,6 @@ func _ready():
 	_on_banner_state_changed(Bridge.advertisement.banner_state)
 	_on_interstitial_state_changed(Bridge.advertisement.interstitial_state)
 	_on_rewarded_state_changed(Bridge.advertisement.rewarded_state)
-	_update_rewarded_placement()
 	
 	Bridge.advertisement.connect("banner_state_changed", self, "_on_banner_state_changed")
 	Bridge.advertisement.connect("interstitial_state_changed", self, "_on_interstitial_state_changed")
@@ -70,11 +69,11 @@ func _on_rewarded_state_changed(state):
 		return
 	
 	last_rewarded_states.append(state)
-	_update_rewarded_placement()
 	
 	if last_rewarded_states.size() > 5:
 		last_rewarded_states.remove(0)
 	
+	_update_rewarded_placement()
 	_update_rewarded_states()
 
 func _on_check_adblock_completed(result):
