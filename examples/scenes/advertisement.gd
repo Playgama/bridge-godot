@@ -4,9 +4,9 @@ onready var is_banner_supported_label = $MarginContainer2/HBoxContainer/VBoxCont
 onready var banner_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/BannerState
 onready var minimum_delay_label = $MarginContainer2/HBoxContainer/VBoxContainer/MinimumDelay
 onready var interstitial_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/InterstitialState
-onready var rewarded_state_label = $MarginContainer2/HBoxContainer/VBoxContainer/RewardedState
+onready var rewarded_state_label = $MarginContainer2/HBoxContainer/VBoxContainer2/RewardedState
 onready var adblock_detected_label = $MarginContainer2/HBoxContainer/VBoxContainer2/AdBlockDetected
-
+onready var rewarded_placement_label = $MarginContainer2/HBoxContainer/VBoxContainer2/RewardedPlacement
 
 var last_banner_states = []
 var last_interstitial_states = []
@@ -20,6 +20,7 @@ func _ready():
 	_on_banner_state_changed(Bridge.advertisement.banner_state)
 	_on_interstitial_state_changed(Bridge.advertisement.interstitial_state)
 	_on_rewarded_state_changed(Bridge.advertisement.rewarded_state)
+	_update_rewarded_placement()
 	
 	Bridge.advertisement.connect("banner_state_changed", self, "_on_banner_state_changed")
 	Bridge.advertisement.connect("interstitial_state_changed", self, "_on_interstitial_state_changed")
@@ -27,25 +28,7 @@ func _ready():
 
 
 func _on_show_banner_button_pressed():
-	var options
-	
-	match Bridge.platform.id:
-		"vk":
-			options = {
-				"position": "bottom",
-				"layoutType": "resize",
-				"canClose": false,
-			}
-		"crazy_games":
-			options = {
-				"position": "top"
-			}
-		"game_distribution":
-			options = {
-				"position": "right"
-			}
-	
-	Bridge.advertisement.show_banner(options)
+	Bridge.advertisement.show_banner()
 
 func _on_hide_banner_button_pressed():
 	Bridge.advertisement.hide_banner()
@@ -87,6 +70,7 @@ func _on_rewarded_state_changed(state):
 		return
 	
 	last_rewarded_states.append(state)
+	_update_rewarded_placement()
 	
 	if last_rewarded_states.size() > 5:
 		last_rewarded_states.remove(0)
@@ -120,3 +104,7 @@ func _update_rewarded_states():
 		text += state + " -> "
 	
 	rewarded_state_label.text = text
+
+func _update_rewarded_placement():
+	if Bridge.advertisement.rewarded_placement:
+		rewarded_placement_label.text = "Rewarded Placement: " + str(Bridge.advertisement.rewarded_placement)
