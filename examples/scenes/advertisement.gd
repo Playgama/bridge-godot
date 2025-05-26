@@ -27,7 +27,7 @@ func _ready():
 
 
 func _on_show_banner_button_pressed():
-	Bridge.advertisement.show_banner()
+	Bridge.advertisement.show_banner(Bridge.BannerPosition.BOTTOM)
 
 func _on_hide_banner_button_pressed():
 	Bridge.advertisement.hide_banner()
@@ -105,5 +105,4 @@ func _update_rewarded_states():
 	rewarded_state_label.text = text
 
 func _update_rewarded_placement():
-	if Bridge.advertisement.rewarded_placement:
-		rewarded_placement_label.text = "Rewarded Placement: " + str(Bridge.advertisement.rewarded_placement)
+	rewarded_placement_label.text = "Rewarded Placement: " + str(Bridge.advertisement.rewarded_placement)
