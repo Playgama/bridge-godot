@@ -7,6 +7,7 @@ var is_banner_supported setget , _is_banner_supported_getter
 var banner_state setget , _banner_state_getter
 var interstitial_state setget , _interstitial_state_getter
 var rewarded_state setget , _rewarded_state_getter
+var rewarded_placement setget , _rewarded_placement_getter
 
 
 func _minimum_delay_between_interstitial_getter():
@@ -24,10 +25,14 @@ func _interstitial_state_getter():
 func _rewarded_state_getter():
 	return _rewarded_state
 
+func _rewarded_placement_getter():
+	return _rewarded_placement
+
 var _minimum_delay_between_interstitial = 60
 var _banner_state
 var _interstitial_state
 var _rewarded_state
+var _rewarded_placement
 
 func _init():
 	_banner_state = Bridge.BannerState.HIDDEN
@@ -37,19 +42,20 @@ func _init():
 func set_minimum_delay_between_interstitial(value):
 	_minimum_delay_between_interstitial = value
 
-func show_banner(options = null):
+func show_banner(position = Bridge.BannerPosition.BOTTOM, placement = null):
 	_set_banner_state(Bridge.BannerState.LOADING)
 	_set_banner_state(Bridge.BannerState.SHOWN)
 
 func hide_banner():
 	_set_banner_state(Bridge.BannerState.HIDDEN)
 
-func show_interstitial():
+func show_interstitial(placement = null):
 	_set_interstitial_state(Bridge.InterstitialState.LOADING)
 	_set_interstitial_state(Bridge.InterstitialState.OPENED)
 	_set_interstitial_state(Bridge.InterstitialState.CLOSED)
 
-func show_rewarded():
+func show_rewarded(placement = null):
+	_rewarded_placement = placement
 	_set_rewarded_state(Bridge.RewardedState.LOADING)
 	_set_rewarded_state(Bridge.RewardedState.OPENED)
 	_set_rewarded_state(Bridge.RewardedState.REWARDED)

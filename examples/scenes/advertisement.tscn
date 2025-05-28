@@ -85,42 +85,54 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Show Interstitial"
 
-[node name="RewardedState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="6"]
-margin_top = 332.0
-margin_right = 348.0
-margin_bottom = 360.0
-custom_fonts/font = ExtResource( 3 )
-text = "Last Rewarded States:"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="7"]
-margin_top = 380.0
-margin_right = 348.0
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" index="1"]
+margin_left = 448.0
+margin_right = 651.0
 margin_bottom = 430.0
 custom_constants/separation = 20
 
-[node name="ShowRewardedButton" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer4" index="0"]
+[node name="RewardedState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="0"]
+margin_right = 203.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 3 )
+text = "Last Rewarded States:"
+
+[node name="RewardedPlacement" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="1"]
+margin_top = 48.0
+margin_right = 203.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 3 )
+text = "Rewarded Placement:"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="2"]
+margin_top = 96.0
+margin_right = 203.0
+margin_bottom = 146.0
+custom_constants/separation = 20
+
+[node name="ShowRewardedButton" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer2/HBoxContainer4" index="0"]
 margin_right = 161.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Show Rewarded"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" index="1"]
-margin_left = 448.0
-margin_right = 618.0
-margin_bottom = 430.0
-custom_constants/separation = 20
-
-[node name="AdBlockDetected" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 170.0
-margin_bottom = 28.0
+[node name="AdBlockDetected" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="3"]
+margin_top = 166.0
+margin_right = 203.0
+margin_bottom = 194.0
 custom_fonts/font = ExtResource( 3 )
 text = "AdBlock Detected:"
 
-[node name="CheckAdBlockButton" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="1"]
-margin_top = 48.0
-margin_right = 170.0
-margin_bottom = 98.0
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="4"]
+margin_top = 214.0
+margin_right = 203.0
+margin_bottom = 264.0
+custom_constants/separation = 20
+
+[node name="CheckAdBlockButton" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer2/HBoxContainer5" index="0"]
+margin_right = 150.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Check AdBlock"
@@ -128,5 +140,5 @@ text = "Check AdBlock"
 [connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer2/ShowBannerButton" to="." method="_on_show_banner_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer2/HideBannerButton" to="." method="_on_hide_banner_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer3/ShowInterstitialButton" to="." method="_on_show_interstitial_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer4/ShowRewardedButton" to="." method="_on_show_rewarded_button_pressed"]
-[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer2/CheckAdBlockButton" to="." method="_on_check_adblock_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer2/HBoxContainer4/ShowRewardedButton" to="." method="_on_show_rewarded_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/HBoxContainer/VBoxContainer2/HBoxContainer5/CheckAdBlockButton" to="." method="_on_check_adblock_button_pressed"]

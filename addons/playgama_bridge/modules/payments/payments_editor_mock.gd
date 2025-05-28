@@ -11,7 +11,7 @@ func purchase(id, callback = null):
 
 func consume_purchase(id, callback = null):
 	if callback != null:
-		callback.call_func(false)
+		callback.call_func(false, null)
 
 func get_catalog(callback = null):
 	if callback != null:
