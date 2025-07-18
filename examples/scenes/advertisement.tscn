@@ -58,24 +58,31 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Hide Banner"
 
-[node name="MinimumDelay" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="3"]
+[node name="IsInterstitialSupported" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="3"]
 margin_top = 166.0
 margin_right = 348.0
 margin_bottom = 194.0
 custom_fonts/font = ExtResource( 3 )
-text = "Minimum Delay Between Interstitials:"
+text = "Is Interstitial Supported:"
 
-[node name="InterstitialState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="4"]
+[node name="MinimumDelay" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="4"]
 margin_top = 214.0
 margin_right = 348.0
 margin_bottom = 242.0
 custom_fonts/font = ExtResource( 3 )
-text = "Last Interstitial States:"
+text = "Minimum Delay Between Interstitials:"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="5"]
+[node name="InterstitialState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="5"]
 margin_top = 262.0
 margin_right = 348.0
-margin_bottom = 312.0
+margin_bottom = 290.0
+custom_fonts/font = ExtResource( 3 )
+text = "Last Interstitial States:"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer" index="6"]
+margin_top = 310.0
+margin_right = 348.0
+margin_bottom = 360.0
 custom_constants/separation = 20
 
 [node name="ShowInterstitialButton" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer/HBoxContainer3" index="0"]
@@ -87,27 +94,34 @@ text = "Show Interstitial"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" index="1"]
 margin_left = 448.0
-margin_right = 651.0
+margin_right = 672.0
 margin_bottom = 430.0
 custom_constants/separation = 20
 
-[node name="RewardedState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 203.0
+[node name="IsRewardedSupported" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="0"]
+margin_right = 224.0
 margin_bottom = 28.0
+custom_fonts/font = ExtResource( 3 )
+text = "Is Interstitial Supported:"
+
+[node name="RewardedState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="1"]
+margin_top = 48.0
+margin_right = 224.0
+margin_bottom = 76.0
 custom_fonts/font = ExtResource( 3 )
 text = "Last Rewarded States:"
 
-[node name="RewardedPlacement" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="1"]
-margin_top = 48.0
-margin_right = 203.0
-margin_bottom = 76.0
+[node name="RewardedPlacement" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="2"]
+margin_top = 96.0
+margin_right = 224.0
+margin_bottom = 124.0
 custom_fonts/font = ExtResource( 3 )
 text = "Rewarded Placement:"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="2"]
-margin_top = 96.0
-margin_right = 203.0
-margin_bottom = 146.0
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="3"]
+margin_top = 144.0
+margin_right = 224.0
+margin_bottom = 194.0
 custom_constants/separation = 20
 
 [node name="ShowRewardedButton" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer2/HBoxContainer4" index="0"]
@@ -117,17 +131,17 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 3 )
 text = "Show Rewarded"
 
-[node name="AdBlockDetected" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="3"]
-margin_top = 166.0
-margin_right = 203.0
-margin_bottom = 194.0
+[node name="AdBlockDetected" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="4"]
+margin_top = 214.0
+margin_right = 224.0
+margin_bottom = 242.0
 custom_fonts/font = ExtResource( 3 )
 text = "AdBlock Detected:"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="4"]
-margin_top = 214.0
-margin_right = 203.0
-margin_bottom = 264.0
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="5"]
+margin_top = 262.0
+margin_right = 224.0
+margin_bottom = 312.0
 custom_constants/separation = 20
 
 [node name="CheckAdBlockButton" type="Button" parent="MarginContainer2/HBoxContainer/VBoxContainer2/HBoxContainer5" index="0"]
