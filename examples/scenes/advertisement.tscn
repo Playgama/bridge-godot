@@ -94,33 +94,33 @@ text = "Show Interstitial"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer2/HBoxContainer" index="1"]
 margin_left = 448.0
-margin_right = 672.0
+margin_right = 670.0
 margin_bottom = 430.0
 custom_constants/separation = 20
 
 [node name="IsRewardedSupported" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="0"]
-margin_right = 224.0
+margin_right = 222.0
 margin_bottom = 28.0
 custom_fonts/font = ExtResource( 3 )
-text = "Is Interstitial Supported:"
+text = "Is Rewarded Supported:"
 
 [node name="RewardedState" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="1"]
 margin_top = 48.0
-margin_right = 224.0
+margin_right = 222.0
 margin_bottom = 76.0
 custom_fonts/font = ExtResource( 3 )
 text = "Last Rewarded States:"
 
 [node name="RewardedPlacement" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="2"]
 margin_top = 96.0
-margin_right = 224.0
+margin_right = 222.0
 margin_bottom = 124.0
 custom_fonts/font = ExtResource( 3 )
 text = "Rewarded Placement:"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="3"]
 margin_top = 144.0
-margin_right = 224.0
+margin_right = 222.0
 margin_bottom = 194.0
 custom_constants/separation = 20
 
@@ -133,14 +133,14 @@ text = "Show Rewarded"
 
 [node name="AdBlockDetected" type="Label" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="4"]
 margin_top = 214.0
-margin_right = 224.0
+margin_right = 222.0
 margin_bottom = 242.0
 custom_fonts/font = ExtResource( 3 )
 text = "AdBlock Detected:"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer2/HBoxContainer/VBoxContainer2" index="5"]
 margin_top = 262.0
-margin_right = 224.0
+margin_right = 222.0
 margin_bottom = 312.0
 custom_constants/separation = 20
 
