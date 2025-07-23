@@ -1,7 +1,11 @@
+signal audio_state_changed
+signal pause_state_changed
+
 var id setget , _id_getter
 var payload setget , _payload_getter
 var language setget , _language_getter
 var tld setget , _tld_getter
+var is_audio_enabled setget , _is_audio_enabled_getter
 var is_get_all_games_supported setget , _is_get_all_games_supported_getter
 var is_get_game_by_id_supported setget , _is_get_game_by_id_supported_getter
 
@@ -19,6 +23,9 @@ func _tld_getter():
 
 func send_message(message):
 	pass
+
+func _is_audio_enabled_getter():
+	return true
 
 func _is_get_all_games_supported_getter():
 	return false
