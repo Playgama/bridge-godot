@@ -33,8 +33,8 @@ func get_entries(id, callback = null):
 	_get_entries_callback = callback
 
 	_js_leaderboards.getEntries(id) \
-		.then(_js_show_native_popup_then) \
-		.catch(_js_show_native_popup_catch)
+		.then(_js_get_entries_then) \
+		.catch(_js_get_entries_catch)
 
 func show_native_popup(id, callback = null):
 	if _show_native_popup_callback != null:
