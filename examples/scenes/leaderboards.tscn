@@ -46,5 +46,14 @@ rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Get Entries"
 
+[node name="ShowNativePopupButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="2"]
+margin_left = 252.0
+margin_right = 444.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 2 )
+text = "Show Native Popup"
+
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/SetScoreButton" to="." method="_on_increment_player_score_button_pressed"]
 [connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetEntriesButton" to="." method="_on_get_entries_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/ShowNativePopupButton" to="." method="_on_show_native_popup_button_pressed"]
