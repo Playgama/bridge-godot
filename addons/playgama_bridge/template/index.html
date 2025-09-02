@@ -54,6 +54,7 @@ $GODOT_HEAD_INCLUDE
         if (!Engine.isWebGLAvailable()) {
             console.error('WebGL not available');
         } else {
+            bridge.engine = 'godot-3'
             bridge.initialize().then(() => {
                 bridge.game.setLoadingProgress(0)
                 engine.startGame({
