@@ -5,6 +5,7 @@ onready var is_authorization_supported_label = $MarginContainer2/VBoxContainer/I
 onready var is_authorized_label = $MarginContainer2/VBoxContainer/IsAuthorized
 onready var player_id_label = $MarginContainer2/VBoxContainer/PlayerID
 onready var player_name_label = $MarginContainer2/VBoxContainer/PlayerName
+onready var player_extra_label = $MarginContainer2/VBoxContainer/PlayerExtra
 onready var player_photo_rect = $MarginContainer2/VBoxContainer/PlayerPhoto
 onready var authorization_state_label = $MarginContainer2/VBoxContainer/HBoxContainer2/AuthorizationState
 
@@ -38,6 +39,16 @@ func _update_player_info():
 	is_authorized_label.text = "Is Authorized: " + str(Bridge.player.is_authorized)
 	player_id_label.text = "Player ID: " + str(Bridge.player.id)
 	player_name_label.text = "Player name: " + str(Bridge.player.name)
+	
+	var extra = "Player extra: "
+	for key in Bridge.player.extra:
+		var value = Bridge.player.extra[key]
+		extra += key
+		extra += ":"
+		extra += str(value)
+		extra += ";"
+	
+	player_extra_label.text = extra
 	
 	if Bridge.player.photos.size() > 0:
 		_load_player_photo(Bridge.player.photos[0])

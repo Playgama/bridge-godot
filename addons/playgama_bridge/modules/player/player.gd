@@ -3,6 +3,7 @@ var is_authorized setget , _is_authorized_getter
 var id setget , _id_getter
 var name setget , _name_getter
 var photos setget , _photos_getter
+var extra setget , _extra_getter
 
 
 func _is_authorization_supported_getter():
@@ -22,6 +23,9 @@ func _photos_getter():
 	for i in range(_js_player.photos.length):
 		array.append(_js_player.photos[i])
 	return array
+
+func _extra_getter():
+	return _utils.convert_to_gd_object(_js_player.extra)
 
 var _js_player = null
 var _js_authorize_then = JavaScript.create_callback(self, "_on_js_authorize_then")
