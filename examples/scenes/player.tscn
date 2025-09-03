@@ -46,17 +46,24 @@ margin_bottom = 172.0
 custom_fonts/font = ExtResource( 3 )
 text = "Player Name:"
 
-[node name="PlayerPhoto" type="TextureRect" parent="MarginContainer2/VBoxContainer" index="4"]
+[node name="PlayerExtra" type="Label" parent="MarginContainer2/VBoxContainer" index="4"]
 margin_top = 192.0
 margin_right = 920.0
-margin_bottom = 267.0
+margin_bottom = 220.0
+custom_fonts/font = ExtResource( 3 )
+text = "Player Extra:"
+
+[node name="PlayerPhoto" type="TextureRect" parent="MarginContainer2/VBoxContainer" index="5"]
+margin_top = 240.0
+margin_right = 920.0
+margin_bottom = 315.0
 rect_min_size = Vector2( 75, 75 )
 expand = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="5"]
-margin_top = 287.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="6"]
+margin_top = 335.0
 margin_right = 920.0
-margin_bottom = 337.0
+margin_bottom = 385.0
 custom_constants/separation = 20
 
 [node name="AuthorizeButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
