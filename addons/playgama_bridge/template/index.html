@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns='http://www.w3.org/1999/xhtml' lang='' xml:lang=''>
+<html xmlns="http://www.w3.org/1999/xhtml" lang=" xml:lang=">
 <head>
-    <meta charset='utf-8' />
-    <meta name='viewport' content='width=device-width, user-scalable=no' />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <title>$GODOT_PROJECT_NAME</title>
-    <style type='text/css'>
+    <style type="text/css">
         html {
             overflow: hidden;
         }
@@ -41,31 +41,39 @@
 $GODOT_HEAD_INCLUDE
 </head>
 <body>
-    <canvas id='canvas'>
+    <canvas id="canvas">
         HTML5 canvas appears to be unsupported in the current browser.<br />
         Please try updating or use a different browser.
     </canvas>
-    <script type="text/javascript" src="./playgama-bridge.js"></script>
-    <script type='text/javascript' src='$GODOT_URL'></script>
-    <script type='text/javascript'>//<![CDATA[
-        const GODOT_CONFIG = $GODOT_CONFIG;
-        var engine = new Engine(GODOT_CONFIG);
+    <script type="text/javascript" src="$GODOT_URL"></script>
+    <script type="text/javascript">//<![CDATA[
+        const GODOT_CONFIG = $GODOT_CONFIG
+        const ENGINE = new Engine(GODOT_CONFIG)
+        const CANVAS = document.getElementById('canvas')
 
-        if (!Engine.isWebGLAvailable()) {
-            console.error('WebGL not available');
-        } else {
+        function addLocalBridge() {
+            const scriptElement = document.createElement('script')
+            scriptElement.src = './playgama-bridge.js'
+            document.body.appendChild(scriptElement)
+            scriptElement.onload = function() {
+                initializeBridge()
+            }
+        }
+
+        function initializeBridge() {
             bridge.engine = 'godot-3'
             bridge.initialize().then(() => {
                 bridge.game.setLoadingProgress(0)
-                engine.startGame({
+                ENGINE.startGame({
                     onProgress: function (current, total) {
-                        bridge.game.setLoadingProgress((current / total) * 100);
+                        bridge.game.setLoadingProgress((current / total) * 100)
                     },
                 }).then(() => {
-                    canvas.focus()
-                });
+                    CANVAS.focus()
+                })
             })
         }
     //]]></script>
+    <script src="https://bridge.playgama.com/v1/stable/playgama-bridge.js" onload="initializeBridge()" onerror="addLocalBridge()"></script>
 </body>
 </html>                                                                                                                                                  
