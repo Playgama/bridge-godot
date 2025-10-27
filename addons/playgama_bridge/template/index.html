@@ -56,25 +56,25 @@ $GODOT_HEAD_INCLUDE
         let bridgeLoaded = false
 
         function addLocalBridge() {
-                if (bridgeLoaded) return
-                bridgeLoaded = true
-                clearTimeout(bridgeTimeout)
+            if (bridgeLoaded) return
+            bridgeLoaded = true
+            clearTimeout(bridgeTimeout)
 
-                if (bridgeScript && bridgeScript.parentNode) {
-                    bridgeScript.onload = null
-                    bridgeScript.onerror = null
-                    bridgeScript.src = ''
-                    bridgeScript.parentNode.removeChild(bridgeScript)
+            if (bridgeScript && bridgeScript.parentNode) {
+                bridgeScript.onload = null
+                bridgeScript.onerror = null
+                bridgeScript.src = ''
+                bridgeScript.parentNode.removeChild(bridgeScript)
 
-                }
-
-                const scriptElement = document.createElement('script')
-                scriptElement.src = './playgama-bridge.js'
-                document.body.appendChild(scriptElement)
-                scriptElement.onload = function() {
-                    initializeBridge()
-                }
             }
+
+            const scriptElement = document.createElement('script')
+            scriptElement.src = './playgama-bridge.js'
+            document.body.appendChild(scriptElement)
+            scriptElement.onload = function() {
+                initializeBridge()
+            }
+        }
 
         bridgeScript = document.createElement('script')
         bridgeScript.src = 'https://bridge.playgama.com/v1/stable/playgama-bridge.js'
