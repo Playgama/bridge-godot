@@ -89,6 +89,7 @@ $GODOT_HEAD_INCLUDE
         document.head.appendChild(bridgeScript)
 
         function initializeBridge() {
+            clearTimeout(bridgeTimeout)
             bridge.engine = 'godot-3'
             bridge.initialize().then(() => {
                 bridge.game.setLoadingProgress(0)
