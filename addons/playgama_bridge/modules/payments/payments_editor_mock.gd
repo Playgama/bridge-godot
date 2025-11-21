@@ -5,7 +5,7 @@ func _is_supported_getter():
 	return false
 
 
-func purchase(id, callback = null):
+func purchase(id, options = null, callback = null):
 	if callback != null:
 		callback.call_func(false, null)
 
