@@ -21,7 +21,7 @@ func _language_getter():
 func _tld_getter():
 	return null
 
-func send_message(message):
+func send_message(message, options = null):
 	pass
 
 func _is_audio_enabled_getter():
