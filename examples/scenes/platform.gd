@@ -9,6 +9,7 @@ onready var server_time_label = $MarginContainer2/VBoxContainer/HBoxContainer4/S
 onready var game_id = $MarginContainer2/VBoxContainer/HBoxContainer6/GameIdInput
 onready var is_get_all_games_supported_label = $MarginContainer2/VBoxContainer/HBoxContainer5/IsGetAllGamesSupported
 onready var is_get_game_by_id_supported_label = $MarginContainer2/VBoxContainer/HBoxContainer6/IsGetGameByIdSupported
+onready var options_input = $MarginContainer2/VBoxContainer/HBoxContainerOptions/OptionsInput
 
 func _ready():
 	id_label.text = "Platform ID: " + Bridge.platform.id
@@ -35,6 +36,31 @@ func _on_send_gameplay_stopped_button_pressed():
 
 func _on_send_player_got_achievement_button_pressed():
 	Bridge.platform.send_message(Bridge.PlatformMessage.PLAYER_GOT_ACHIEVEMENT)
+
+func _parse_options():
+	var text = options_input.text.strip_edges()
+	if text.empty():
+		return null
+	var parse_result = JSON.parse(text)
+	if parse_result.error != OK:
+		print("Invalid JSON: " + parse_result.error_string)
+		return null
+	return parse_result.result
+
+func _on_send_level_started_button_pressed():
+	Bridge.platform.send_message(Bridge.PlatformMessage.LEVEL_STARTED, _parse_options())
+
+func _on_send_level_completed_button_pressed():
+	Bridge.platform.send_message(Bridge.PlatformMessage.LEVEL_COMPLETED, _parse_options())
+
+func _on_send_level_failed_button_pressed():
+	Bridge.platform.send_message(Bridge.PlatformMessage.LEVEL_FAILED, _parse_options())
+
+func _on_send_level_paused_button_pressed():
+	Bridge.platform.send_message(Bridge.PlatformMessage.LEVEL_PAUSED, _parse_options())
+
+func _on_send_level_resumed_button_pressed():
+	Bridge.platform.send_message(Bridge.PlatformMessage.LEVEL_RESUMED, _parse_options())
 
 func _on_get_server_time_button_pressed():
 	Bridge.platform.get_server_time(funcref(self, "_on_get_server_time_completed"))
