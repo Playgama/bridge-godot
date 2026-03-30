@@ -61,6 +61,13 @@ func send_message(message, options = null):
 	else:
 		_js_platform.sendMessage(message)
 
+func send_custom_message(id, options = null):
+	if options != null:
+		var js_options = _utils.convert_to_js(options)
+		_js_platform.sendCustomMessage(id, js_options)
+	else:
+		_js_platform.sendCustomMessage(id)
+
 func get_server_time(callback):
 	if _get_server_time_callback != null:
 		return
