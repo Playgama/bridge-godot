@@ -19,51 +19,7 @@ margin_right = 920.0
 margin_bottom = 430.0
 custom_constants/separation = 20
 
-[node name="DefaultStorageType" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
-margin_right = 920.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
-text = "Default Storage Type:"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
-margin_top = 48.0
-margin_right = 920.0
-margin_bottom = 76.0
-custom_constants/separation = 20
-
-[node name="IsLocalStorageSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 254.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
-text = "Is Local Storage Supported:"
-
-[node name="IsLocalStorageAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 274.0
-margin_right = 514.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
-text = "Is Local Storage Available:"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
-margin_top = 96.0
-margin_right = 920.0
-margin_bottom = 124.0
-custom_constants/separation = 20
-
-[node name="IsPlatformInternalSupported" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="0"]
-margin_right = 288.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
-text = "Is Platform Internal Supported:"
-
-[node name="IsPlatformInternalAvailable" type="Label" parent="MarginContainer2/VBoxContainer/HBoxContainer4" index="1"]
-margin_left = 308.0
-margin_right = 582.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
-text = "Is Platform Internal Available:"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="3"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="0"]
 margin_top = 144.0
 margin_right = 920.0
 margin_bottom = 194.0
@@ -93,7 +49,7 @@ margin_bottom = 50.0
 custom_fonts/font = ExtResource( 3 )
 text = "Is Tutorial Completed"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="4"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
 margin_top = 214.0
 margin_right = 920.0
 margin_bottom = 264.0
