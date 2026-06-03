@@ -8,6 +8,7 @@ var tld setget , _tld_getter
 var is_audio_enabled setget , _is_audio_enabled_getter
 var is_get_all_games_supported setget , _is_get_all_games_supported_getter
 var is_get_game_by_id_supported setget , _is_get_game_by_id_supported_getter
+var is_external_calls_supported setget , _is_external_calls_supported_getter
 
 func _id_getter():
 	return "mock"
@@ -32,6 +33,9 @@ func _is_get_all_games_supported_getter():
 
 func _is_get_game_by_id_supported_getter():
 	return false
+
+func _is_external_calls_supported_getter():
+	return true
 
 func get_server_time(callback):
 	if callback != null:
