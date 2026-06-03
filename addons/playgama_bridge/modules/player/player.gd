@@ -1,5 +1,6 @@
 var is_authorization_supported setget , _is_authorization_supported_getter
 var is_authorized setget , _is_authorized_getter
+var is_guest setget , _is_guest_getter
 var id setget , _id_getter
 var name setget , _name_getter
 var photos setget , _photos_getter
@@ -11,6 +12,9 @@ func _is_authorization_supported_getter():
 
 func _is_authorized_getter():
 	return _js_player.isAuthorized
+
+func _is_guest_getter():
+	return _js_player.isGuest
 
 func _id_getter():
 	return _js_player.id
