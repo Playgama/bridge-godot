@@ -73,6 +73,7 @@ var payments setget , _payments_getter
 var achievements setget , _achievements_getter
 var remote_config setget , _remote_config_getter
 var cross_promo setget , _cross_promo_getter
+var tasks setget , _tasks_getter
 
 
 func _platform_getter():
@@ -108,6 +109,9 @@ func _remote_config_getter():
 func _cross_promo_getter():
 	return _cross_promo
 
+func _tasks_getter():
+	return _tasks
+
 var _platform = null
 var _device = null
 var _player = null
@@ -119,6 +123,7 @@ var _payments = null
 var _achievements = null
 var _remote_config = null
 var _cross_promo = null
+var _tasks = null
 
 
 func _ready():
@@ -135,6 +140,7 @@ func _ready():
 		_achievements = load("res://addons/playgama_bridge/modules/achievements/achievements.gd").new(js_bridge.achievements)
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config.gd").new(js_bridge.remoteConfig)
 		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo.gd").new(js_bridge.crossPromo)
+		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks.gd").new(js_bridge.tasks)
 	else:
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/playgama_bridge/modules/device/device_editor_mock.gd").new()
@@ -147,3 +153,4 @@ func _ready():
 		_achievements = load("res://addons/playgama_bridge/modules/achievements/achievements_editor_mock.gd").new()
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config_editor_mock.gd").new()
 		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo_editor_mock.gd").new()
+		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks_editor_mock.gd").new()
