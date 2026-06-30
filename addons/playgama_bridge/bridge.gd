@@ -74,6 +74,7 @@ var achievements setget , _achievements_getter
 var remote_config setget , _remote_config_getter
 var cross_promo setget , _cross_promo_getter
 var tasks setget , _tasks_getter
+var daily_rewards setget , _daily_rewards_getter
 
 
 func _platform_getter():
@@ -112,6 +113,9 @@ func _cross_promo_getter():
 func _tasks_getter():
 	return _tasks
 
+func _daily_rewards_getter():
+	return _daily_rewards
+
 var _platform = null
 var _device = null
 var _player = null
@@ -124,11 +128,14 @@ var _achievements = null
 var _remote_config = null
 var _cross_promo = null
 var _tasks = null
+var _daily_rewards = null
+var _js_bridge = null
 
 
 func _ready():
 	if OS.has_feature("JavaScript"):
 		var js_bridge = JavaScript.get_interface("bridge")
+		_js_bridge = js_bridge
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform.gd").new(js_bridge.platform)
 		_device = load("res://addons/playgama_bridge/modules/device/device.gd").new(js_bridge.device)
 		_player = load("res://addons/playgama_bridge/modules/player/player.gd").new(js_bridge.player)
@@ -141,6 +148,7 @@ func _ready():
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config.gd").new(js_bridge.remoteConfig)
 		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo.gd").new(js_bridge.crossPromo)
 		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks.gd").new(js_bridge.tasks)
+		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards.gd").new(js_bridge.dailyRewards)
 	else:
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/playgama_bridge/modules/device/device_editor_mock.gd").new()
@@ -154,3 +162,4 @@ func _ready():
 		_remote_config = load("res://addons/playgama_bridge/modules/remote_config/remote_config_editor_mock.gd").new()
 		_cross_promo = load("res://addons/playgama_bridge/modules/cross_promo/cross_promo_editor_mock.gd").new()
 		_tasks = load("res://addons/playgama_bridge/modules/tasks/tasks_editor_mock.gd").new()
+		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards_editor_mock.gd").new()

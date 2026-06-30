@@ -19,13 +19,7 @@ margin_right = 920.0
 margin_bottom = 430.0
 custom_constants/separation = 20
 
-[node name="IsAchievementsSupported" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
-margin_right = 920.0
-margin_bottom = 28.0
-custom_fonts/font = ExtResource( 3 )
-text = "Is Achievements Supported:"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="0"]
 margin_top = 144.0
 margin_right = 920.0
 margin_bottom = 194.0
@@ -47,7 +41,7 @@ custom_fonts/font = ExtResource( 3 )
 align = 1
 placeholder_text = "Name"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
 margin_top = 214.0
 margin_right = 920.0
 margin_bottom = 264.0

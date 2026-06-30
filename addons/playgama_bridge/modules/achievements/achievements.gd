@@ -1,10 +1,3 @@
-var is_supported setget , _is_supported_getter
-
-
-func _is_supported_getter():
-	return _js_achievements.isSupported
-
-
 var _js_achievements = null
 var _unlock_callback = null
 var _js_unlock_then = JavaScript.create_callback(self, "_on_js_unlock_then")
@@ -24,13 +17,13 @@ func unlock(id, callback = null):
 		.then(_js_unlock_then) \
 		.catch(_js_unlock_catch)
 
-func get_list(callback = null):
+func get_achievements(callback = null):
 	if _get_list_callback != null:
 		return
 
 	_get_list_callback = callback
 
-	_js_achievements.getList() \
+	_js_achievements.getAchievements() \
 		.then(_js_get_list_then) \
 		.catch(_js_get_list_catch)
 

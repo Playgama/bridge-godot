@@ -28,7 +28,7 @@ text = "Playgama Bridge Examples"
 [node name="HBoxContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 44.0
 margin_right = 920.0
-margin_bottom = 234.0
+margin_bottom = 304.0
 custom_constants/vseparation = 20
 custom_constants/hseparation = 20
 columns = 4
@@ -56,97 +56,95 @@ rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Player"
 
-[node name="GameButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="StorageButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 600.0
 margin_right = 780.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
-text = "Game"
-
-[node name="StorageButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 70.0
-margin_right = 180.0
-margin_bottom = 120.0
-rect_min_size = Vector2( 180, 50 )
-custom_fonts/font = ExtResource( 2 )
 text = "Storage"
 
 [node name="AdvertisementButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 200.0
 margin_top = 70.0
-margin_right = 380.0
+margin_right = 180.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Advertisement"
 
 [node name="SocialButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 400.0
+margin_left = 200.0
 margin_top = 70.0
-margin_right = 580.0
+margin_right = 380.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Social"
 
 [node name="LeaderboardsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 600.0
+margin_left = 400.0
 margin_top = 70.0
-margin_right = 780.0
+margin_right = 580.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Leaderboards"
 
 [node name="PaymentsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_top = 140.0
-margin_right = 180.0
-margin_bottom = 190.0
+margin_left = 600.0
+margin_top = 70.0
+margin_right = 780.0
+margin_bottom = 120.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Payments"
 
 [node name="AchievementsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 200.0
 margin_top = 140.0
-margin_right = 380.0
+margin_right = 180.0
 margin_bottom = 190.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Achievements"
 
 [node name="RemoteConfig" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 400.0
+margin_left = 200.0
 margin_top = 140.0
-margin_right = 580.0
+margin_right = 380.0
 margin_bottom = 190.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Remote Config"
 
 [node name="CrossPromoButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 600.0
+margin_left = 400.0
 margin_top = 140.0
-margin_right = 780.0
+margin_right = 580.0
 margin_bottom = 190.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Cross Promo"
 
 [node name="TasksButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 800.0
+margin_left = 600.0
 margin_top = 140.0
-margin_right = 980.0
+margin_right = 780.0
 margin_bottom = 190.0
 rect_min_size = Vector2( 180, 50 )
 custom_fonts/font = ExtResource( 2 )
 text = "Tasks"
 
+[node name="DailyRewardsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_top = 210.0
+margin_right = 180.0
+margin_bottom = 260.0
+rect_min_size = Vector2( 180, 50 )
+custom_fonts/font = ExtResource( 2 )
+text = "Daily Rewards"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlatformButton" to="." method="_on_platform_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DeviceButton" to="." method="_on_device_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/PlayerButton" to="." method="_on_player_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GameButton" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StorageButton" to="." method="_on_storage_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/AdvertisementButton" to="." method="_on_advertisement_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SocialButton" to="." method="_on_social_button_pressed"]
@@ -156,3 +154,4 @@ text = "Tasks"
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/RemoteConfig" to="." method="_on_remote_config_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/CrossPromoButton" to="." method="_on_cross_promo_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/TasksButton" to="." method="_on_tasks_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/DailyRewardsButton" to="." method="_on_daily_rewards_button_pressed"]
