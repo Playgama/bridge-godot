@@ -1,6 +1,7 @@
 signal banner_state_changed
 signal interstitial_state_changed
 signal rewarded_state_changed
+signal advanced_banners_state_changed
 
 var minimum_delay_between_interstitial setget , _minimum_delay_between_interstitial_getter
 var is_banner_supported setget , _is_banner_supported_getter
@@ -10,6 +11,8 @@ var interstitial_state setget , _interstitial_state_getter
 var is_rewarded_supported setget , _is_rewarded_supported_getter
 var rewarded_state setget , _rewarded_state_getter
 var rewarded_placement setget , _rewarded_placement_getter
+var is_advanced_banners_supported setget , _is_advanced_banners_supported_getter
+var advanced_banners_state setget , _advanced_banners_state_getter
 
 
 func _minimum_delay_between_interstitial_getter():
@@ -36,16 +39,24 @@ func _rewarded_state_getter():
 func _rewarded_placement_getter():
 	return _rewarded_placement
 
+func _is_advanced_banners_supported_getter():
+	return true
+
+func _advanced_banners_state_getter():
+	return _advanced_banners_state
+
 var _minimum_delay_between_interstitial = 60
 var _banner_state
 var _interstitial_state
 var _rewarded_state
 var _rewarded_placement
+var _advanced_banners_state
 
 func _init():
 	_banner_state = Bridge.BannerState.HIDDEN
 	_interstitial_state = Bridge.InterstitialState.CLOSED
 	_rewarded_state = Bridge.RewardedState.CLOSED
+	_advanced_banners_state = Bridge.BannerState.HIDDEN
 
 func set_minimum_delay_between_interstitial(value):
 	_minimum_delay_between_interstitial = value
@@ -69,6 +80,13 @@ func show_rewarded(placement = null):
 	_set_rewarded_state(Bridge.RewardedState.REWARDED)
 	_set_rewarded_state(Bridge.RewardedState.CLOSED)
 
+func show_advanced_banners(placement = null):
+	_set_advanced_banners_state(Bridge.BannerState.LOADING)
+	_set_advanced_banners_state(Bridge.BannerState.SHOWN)
+
+func hide_advanced_banners():
+	_set_advanced_banners_state(Bridge.BannerState.HIDDEN)
+
 func check_adblock(callback):
 	if callback != null:
 		callback.call_func(false)
@@ -77,6 +95,10 @@ func check_adblock(callback):
 func _set_banner_state(state):
 	_banner_state = state
 	emit_signal("banner_state_changed", _banner_state)
+
+func _set_advanced_banners_state(state):
+	_advanced_banners_state = state
+	emit_signal("advanced_banners_state_changed", _advanced_banners_state)
 
 func _set_interstitial_state(state):
 	_interstitial_state = state
