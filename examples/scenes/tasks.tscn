@@ -1,0 +1,95 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://examples/scenes/detailed_scene_base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://examples/scenes/tasks.gd" type="Script" id=2]
+[ext_resource path="res://examples/fonts/default_font.tres" type="DynamicFont" id=3]
+
+[node name="Tasks" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="MarginContainer2" type="MarginContainer" parent="." index="1"]
+anchor_right = 1.0
+margin_left = 20.0
+margin_top = 90.0
+margin_right = -20.0
+margin_bottom = 520.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" index="0"]
+margin_right = 920.0
+margin_bottom = 430.0
+custom_constants/separation = 20
+
+[node name="Output" type="Label" parent="MarginContainer2/VBoxContainer" index="0"]
+margin_right = 920.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+custom_fonts/font = ExtResource( 3 )
+text = "Tasks"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="1"]
+margin_top = 140.0
+margin_right = 920.0
+margin_bottom = 190.0
+custom_constants/separation = 20
+
+[node name="MetricInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="0"]
+margin_right = 260.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 260, 50 )
+custom_fonts/font = ExtResource( 3 )
+placeholder_text = "metric e.g. enemy_killed"
+
+[node name="AmountInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer2" index="1"]
+margin_left = 280.0
+margin_right = 410.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 130, 50 )
+custom_fonts/font = ExtResource( 3 )
+align = 1
+placeholder_text = "amount"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="2"]
+margin_top = 210.0
+margin_right = 920.0
+margin_bottom = 260.0
+custom_constants/separation = 20
+
+[node name="TaskIdInput" type="LineEdit" parent="MarginContainer2/VBoxContainer/HBoxContainer3" index="0"]
+margin_right = 260.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 260, 50 )
+custom_fonts/font = ExtResource( 3 )
+placeholder_text = "task id e.g. daily_kills"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer" index="3"]
+margin_top = 280.0
+margin_right = 920.0
+margin_bottom = 330.0
+custom_constants/separation = 20
+
+[node name="GetTasksButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="0"]
+margin_right = 140.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 3 )
+text = "Get Tasks"
+
+[node name="AddProgressButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="1"]
+margin_left = 160.0
+margin_right = 320.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 3 )
+text = "Add Progress"
+
+[node name="ClaimRewardButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer" index="2"]
+margin_left = 340.0
+margin_right = 500.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 0, 50 )
+custom_fonts/font = ExtResource( 3 )
+text = "Claim Reward"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/GetTasksButton" to="." method="_on_get_tasks_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/AddProgressButton" to="." method="_on_add_progress_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/ClaimRewardButton" to="." method="_on_claim_reward_button_pressed"]
