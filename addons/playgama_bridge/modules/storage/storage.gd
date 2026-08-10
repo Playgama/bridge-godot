@@ -1,6 +1,9 @@
+var _utils = load("res://addons/playgama_bridge/utils.gd").new()
+
 var _js_storage = null
 var _is_getting = false
 var _get_callback = null
+var _get_try_parse_json = false
 var _js_get_then = JavaScript.create_callback(self, "_on_js_get_then")
 var _js_get_catch = JavaScript.create_callback(self, "_on_js_get_catch")
 
@@ -15,7 +18,7 @@ var _js_delete_then = JavaScript.create_callback(self, "_on_js_delete_then")
 var _js_delete_catch = JavaScript.create_callback(self, "_on_js_delete_catch")
 
 
-func get(key, callback = null):
+func get(key, callback = null, try_parse_json = false):
 	if _is_getting:
 		return
 
@@ -36,12 +39,14 @@ func get(key, callback = null):
 
 	_is_getting = true
 	_get_callback = callback
+	_get_try_parse_json = try_parse_json
 
+	# JSON is parsed on the GDScript side, so the web and the editor mock behave the same
 	_js_storage.get(js_key, false) \
 		.then(_js_get_then) \
 		.catch(_js_get_catch)
 
-func set(key, value, callback = null):
+func set(key, value = null, callback = null):
 	if _is_setting:
 		return
 
@@ -51,14 +56,24 @@ func set(key, value, callback = null):
 	match key_type:
 		TYPE_STRING:
 			js_key = key
-			js_value = value
+			js_value = _utils.serialize_value(value)
 		TYPE_ARRAY:
 			js_key = JavaScript.create_object("Array")
 			js_value = JavaScript.create_object("Array")
 			for k in key:
 				js_key.push(k)
 			for v in value:
-				js_value.push(v)
+				js_value.push(_utils.serialize_value(v))
+		TYPE_DICTIONARY:
+			# set(data, callback) — the second argument is the callback in this form
+			if callback == null:
+				callback = value
+
+			js_key = JavaScript.create_object("Array")
+			js_value = JavaScript.create_object("Array")
+			for k in key:
+				js_key.push(k)
+				js_value.push(_utils.serialize_value(key[k]))
 		_:
 			return
 
@@ -94,6 +109,12 @@ func delete(key, callback = null):
 func _init(js_storage):
 	_js_storage = js_storage
 
+func _deserialize(value):
+	if not _get_try_parse_json:
+		return value
+
+	return _utils.deserialize_value(value)
+
 func _on_js_get_then(args):
 	_is_getting = false
 	if _get_callback == null:
@@ -105,10 +126,10 @@ func _on_js_get_then(args):
 		TYPE_OBJECT:
 			var array = []
 			for i in range(data.length):
-				array.append(data[i])
+				array.append(_deserialize(data[i]))
 			_get_callback.call_func(true, array)
 		_:
-			_get_callback.call_func(true, data)
+			_get_callback.call_func(true, _deserialize(data))
 
 func _on_js_get_catch(args):
 	_is_getting = false
