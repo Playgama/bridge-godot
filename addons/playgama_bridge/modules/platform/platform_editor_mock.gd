@@ -5,6 +5,8 @@ var id setget , _id_getter
 var payload setget , _payload_getter
 var language setget , _language_getter
 var tld setget , _tld_getter
+var launch_source setget , _launch_source_getter
+var data setget , _data_getter
 var is_audio_enabled setget , _is_audio_enabled_getter
 var is_external_calls_supported setget , _is_external_calls_supported_getter
 var is_external_links_allowed setget , _is_external_links_allowed_getter
@@ -20,6 +22,12 @@ func _language_getter():
 
 func _tld_getter():
 	return null
+
+func _launch_source_getter():
+	return null
+
+func _data_getter():
+	return {}
 
 func send_message(message, options = null):
 	pass
