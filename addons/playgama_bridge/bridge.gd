@@ -61,6 +61,16 @@ const RewardedState = {
 	FAILED = "failed"
 }
 
+const LaunchSource = {
+	NOTIFICATION = "notification",
+	POST = "post"
+}
+
+const PostRewardType = {
+	VISIT = "visit",
+	AUTHOR = "author"
+}
+
 
 var platform setget , _platform_getter
 var device setget , _device_getter

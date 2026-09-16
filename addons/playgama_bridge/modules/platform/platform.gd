@@ -5,6 +5,8 @@ var id setget , _id_getter
 var payload setget , _payload_getter
 var language setget , _language_getter
 var tld setget , _tld_getter
+var launch_source setget , _launch_source_getter
+var data setget , _data_getter
 var is_audio_enabled setget , _is_audio_enabled_getter
 var is_external_calls_supported setget , _is_external_calls_supported_getter
 var is_external_links_allowed setget , _is_external_links_allowed_getter
@@ -31,6 +33,17 @@ func _language_getter():
 
 func _tld_getter():
 	return _js_platform.tld
+
+# Where the game was opened from, see Bridge.LaunchSource; null when the
+# platform did not say.
+func _launch_source_getter():
+	return _js_platform.launchSource
+
+# Everything the launch carries: the parameters the platform passed to the game
+# and, when it was opened from one of the game's own posts, "postId" — the id of
+# that post's config entry.
+func _data_getter():
+	return _utils.convert_to_gd_object(_js_platform.data)
 
 func _is_audio_enabled_getter():
 	return _js_platform.isAudioEnabled

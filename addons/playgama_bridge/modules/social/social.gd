@@ -5,6 +5,7 @@ var is_create_post_supported setget , _is_create_post_supported_getter
 var is_add_to_favorites_supported setget , _is_add_to_favorites_supported_getter
 var is_add_to_home_screen_supported setget , _is_add_to_home_screen_supported_getter
 var is_rate_supported setget , _is_rate_supported_getter
+var is_post_reward_supported setget , _is_post_reward_supported_getter
 
 
 func _is_share_supported_getter():
@@ -27,6 +28,9 @@ func _is_add_to_home_screen_supported_getter():
 
 func _is_rate_supported_getter():
 	return _js_social.isRateSupported
+
+func _is_post_reward_supported_getter():
+	return _js_social.isPostRewardSupported
 	
 var _js_social = null
 var _share_callback = null
@@ -50,6 +54,9 @@ var _js_add_to_home_screen_catch = JavaScript.create_callback(self, "_on_js_add_
 var _rate_callback = null
 var _js_rate_then = JavaScript.create_callback(self, "_on_js_rate_then")
 var _js_rate_catch = JavaScript.create_callback(self, "_on_js_rate_catch")
+var _get_post_reward_callback = null
+var _js_get_post_reward_then = JavaScript.create_callback(self, "_on_js_get_post_reward_then")
+var _js_get_post_reward_catch = JavaScript.create_callback(self, "_on_js_get_post_reward_catch")
 var _utils = load("res://addons/playgama_bridge/utils.gd").new()
 
 
@@ -98,7 +105,14 @@ func invite_friends(options = null, callback = null):
 		.then(_js_invite_friends_then) \
 		.catch(_js_invite_friends_catch)
 
-func create_post(options = null, callback = null):
+# `payload` is the game's own string for this one post — a level, a seed, a
+# challenge — handed back as Bridge.platform.payload when someone opens it.
+# create_post(options, callback) from before the payload argument still works.
+func create_post(options = null, payload = null, callback = null):
+	if payload != null and typeof(payload) != TYPE_STRING:
+		callback = payload
+		payload = null
+	
 	if _create_post_callback != null:
 		return
 	
@@ -108,7 +122,8 @@ func create_post(options = null, callback = null):
 	if options:
 		js_options = _utils.convert_to_js(options)
 	
-	_js_social.createPost(js_options) \
+	var promise = _js_social.createPost(js_options, payload) if payload != null else _js_social.createPost(js_options)
+	promise \
 		.then(_js_create_post_then) \
 		.catch(_js_create_post_catch)
 
@@ -138,6 +153,18 @@ func rate(callback = null):
 	_js_social.rate() \
 		.then(_js_rate_then) \
 		.catch(_js_rate_catch)
+
+# Everything the player has coming from posts right now: the reward for the post the
+# game was opened from and what the author earned from the players who came through
+# their posts. The callback gets (success, rewards); the Array is empty when there is nothing.
+func get_post_reward(callback = null):
+	if _get_post_reward_callback != null:
+		return
+
+	_get_post_reward_callback = callback
+	_js_social.getPostReward() \
+		.then(_js_get_post_reward_then) \
+		.catch(_js_get_post_reward_catch)
 
 
 func _init(js_social):
@@ -212,3 +239,23 @@ func _on_js_rate_catch(args):
 	if _rate_callback != null:
 		_rate_callback.call_func(false)
 		_rate_callback = null
+
+func _on_js_get_post_reward_then(args):
+	if _get_post_reward_callback != null:
+		var data = args[0]
+		var data_type = typeof(data)
+		match data_type:
+			TYPE_OBJECT:
+				var array = []
+				for i in range(data.length):
+					var item = _utils.convert_to_gd_object(data[i])
+					array.append(item)
+				_get_post_reward_callback.call_func(true, array)
+			_:
+				_get_post_reward_callback.call_func(false, [])
+		_get_post_reward_callback = null
+
+func _on_js_get_post_reward_catch(args):
+	if _get_post_reward_callback != null:
+		_get_post_reward_callback.call_func(false, [])
+		_get_post_reward_callback = null
