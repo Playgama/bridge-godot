@@ -16,11 +16,16 @@ func _export_begin(features, is_debug, path, flags):
 
 func _copy_file(file_name):
 	var file_from = File.new()
-	file_from.open(JS_SDK_PATH + file_name, File.READ)
+	if file_from.open(JS_SDK_PATH + file_name, File.READ) != OK:
+		push_error("Bridge: failed to read " + JS_SDK_PATH + file_name)
+		return
 	
 	var file_to = File.new()
-	file_to.open(_path.get_base_dir() + "/" + file_name, File.WRITE)
-	file_to.store_string(file_from.get_as_text())
+	if file_to.open(_path.get_base_dir() + "/" + file_name, File.WRITE) != OK:
+		push_error("Bridge: failed to write " + file_name)
+		file_from.close()
+		return
 	
-	file_from = null
-	file_to = null
+	file_to.store_string(file_from.get_as_text())
+	file_from.close()
+	file_to.close()

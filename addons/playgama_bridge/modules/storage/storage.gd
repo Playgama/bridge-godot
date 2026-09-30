@@ -60,6 +60,9 @@ func set(key, value = null, callback = null):
 		TYPE_ARRAY:
 			js_key = JavaScript.create_object("Array")
 			js_value = JavaScript.create_object("Array")
+			if typeof(value) != TYPE_ARRAY or value.size() != key.size():
+				push_error("Bridge storage: value must be an array of the same size as key")
+				return
 			for k in key:
 				js_key.push(k)
 			for v in value:
