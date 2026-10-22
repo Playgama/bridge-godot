@@ -107,7 +107,7 @@ var daily_rewards setget , _daily_rewards_getter
 var notifications setget , _notifications_getter
 var analytics setget , _analytics_getter
 # Node already has a "multiplayer" property, so the module is exposed under another name
-var multiplayer_rooms setget , _multiplayer_rooms_getter
+var mp setget , _mp_getter
 
 
 func _platform_getter():
@@ -155,8 +155,8 @@ func _notifications_getter():
 func _analytics_getter():
 	return _analytics
 
-func _multiplayer_rooms_getter():
-	return _multiplayer_rooms
+func _mp_getter():
+	return _mp
 
 var _platform = null
 var _device = null
@@ -173,7 +173,7 @@ var _tasks = null
 var _daily_rewards = null
 var _notifications = null
 var _analytics = null
-var _multiplayer_rooms = null
+var _mp = null
 var _js_bridge = null
 
 
@@ -196,7 +196,7 @@ func _ready():
 		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards.gd").new(js_bridge.dailyRewards)
 		_notifications = load("res://addons/playgama_bridge/modules/notifications/notifications.gd").new(js_bridge.notifications)
 		_analytics = load("res://addons/playgama_bridge/modules/analytics/analytics.gd").new(js_bridge.analytics)
-		_multiplayer_rooms = load("res://addons/playgama_bridge/modules/multiplayer/multiplayer.gd").new(js_bridge.multiplayer)
+		_mp = load("res://addons/playgama_bridge/modules/multiplayer/multiplayer.gd").new(js_bridge.multiplayer)
 	else:
 		_platform = load("res://addons/playgama_bridge/modules/platform/platform_editor_mock.gd").new()
 		_device = load("res://addons/playgama_bridge/modules/device/device_editor_mock.gd").new()
@@ -213,4 +213,4 @@ func _ready():
 		_daily_rewards = load("res://addons/playgama_bridge/modules/daily_rewards/daily_rewards_editor_mock.gd").new()
 		_notifications = load("res://addons/playgama_bridge/modules/notifications/notifications_editor_mock.gd").new()
 		_analytics = load("res://addons/playgama_bridge/modules/analytics/analytics_editor_mock.gd").new()
-		_multiplayer_rooms = load("res://addons/playgama_bridge/modules/multiplayer/multiplayer_editor_mock.gd").new()
+		_mp = load("res://addons/playgama_bridge/modules/multiplayer/multiplayer_editor_mock.gd").new()
