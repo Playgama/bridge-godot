@@ -32,6 +32,18 @@ func _on_get_entries_completed(success, entries):
 		print("Photo: " + str(entry.photo))
 
 
+func _on_get_info_button_pressed():
+	var leaderboard_id = ""
+	Bridge.leaderboards.get_info(leaderboard_id, funcref(self, "_on_get_info_completed"))
+
+func _on_get_info_completed(success, info):
+	print(success)
+
+	if success:
+		print("Period: " + str(info.period))
+		print("Time Left: " + str(info.time_left))
+
+
 func _on_show_native_popup_button_pressed():
 	var leaderboard_id = ""
 	Bridge.leaderboards.show_native_popup(leaderboard_id , funcref(self, "_on_show_native_popup_completed"))

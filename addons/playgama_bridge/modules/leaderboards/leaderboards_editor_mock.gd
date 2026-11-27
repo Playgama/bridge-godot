@@ -12,7 +12,11 @@ func set_score(id, score, callback = null):
 func get_entries(id, callback = null):
 	if callback != null:
 		callback.call_func(false, [])
-		
+
+func get_info(id, callback = null):
+	if callback != null:
+		callback.call_func(false, null)
+
 func show_native_popup(id, callback = null):
 	if callback != null:
 		callback.call_func(false)

@@ -34,6 +34,13 @@ const LeaderboardType = {
 	NATIVE_POPUP = "native_popup"
 }
 
+const LeaderboardPeriod = {
+	PERMANENT = "permanent",
+	DAILY = "daily",
+	WEEKLY = "weekly",
+	MONTHLY = "monthly"
+}
+
 const BannerPosition = {
 	TOP = "top",
 	BOTTOM = "bottom"
