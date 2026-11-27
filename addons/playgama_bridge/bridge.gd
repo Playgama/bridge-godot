@@ -41,11 +41,6 @@ const LeaderboardPeriod = {
 	MONTHLY = "monthly"
 }
 
-const LeaderboardScoreMode = {
-	BEST = "best",
-	SUM = "sum"
-}
-
 const BannerPosition = {
 	TOP = "top",
 	BOTTOM = "bottom"
